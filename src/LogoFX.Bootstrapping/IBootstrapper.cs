@@ -11,15 +11,15 @@ namespace LogoFX.Bootstrapping
     public interface IBootstrapper
     {
         /// <summary>
-        /// Gets the list of composition modules that were composed during initialization.
+        /// Gets the composition modules.
         /// </summary>
         /// <value>
-        /// The list of composition modules.
+        /// The composition modules.
         /// </value>
         IEnumerable<ICompositionModule> Modules { get; }
 
         /// <summary>
-        /// Gets the assemblies that can be inspected for the additional components.
+        /// Gets the assemblies which can be inspected for the additional components.
         /// </summary>
         /// <value>
         /// The assemblies.
