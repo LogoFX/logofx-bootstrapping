@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{36864E7E-5BDA-4CC8-AD9D-50379AAC1C58}</ProjectGuid>
+    <ProjectGuid>{709A3DF5-978D-4CA2-A952-D177EC3A902B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LogoFX.Bootstrapping</RootNamespace>
-    <AssemblyName>LogoFX.Bootstrapping</AssemblyName>
+    <AssemblyName>LogoFX.Bootstrapping.Middleware</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -32,12 +32,11 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\bin\Release\LogoFX.Bootstrapping.XML</DocumentationFile>
+    <DocumentationFile>..\bin\Release\LogoFX.Bootstrapping.Middleware.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContainerAdapterExtensions.cs" />
-    <Compile Include="ContainerExtensions.cs" />
-    <Compile Include="IBootstrapper.cs" />
+    <Compile Include="BootstrapperExtensions.cs" />
+    <Compile Include="Middleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj">
+      <Project>{36864E7E-5BDA-4CC8-AD9D-50379AAC1C58}</Project>
+      <Name>LogoFX.Bootstrapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
