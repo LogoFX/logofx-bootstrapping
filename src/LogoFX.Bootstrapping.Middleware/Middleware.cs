@@ -99,9 +99,10 @@ namespace LogoFX.Bootstrapping
         {
             var moduleRootObjectType = typeof (TModuleRootObject);
             var typeInfo = moduleRootObjectType.GetTypeInfo();
-            var definedTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>
-                t.IsAssignableFrom(typeInfo));
-            @object.ContainerAdapter.RegisterCollection(moduleRootObjectType, definedTypes);
+            var moduleTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>
+                t.IsInterface == false && t.IsAbstract == false &&
+                typeInfo.IsAssignableFrom(t)).Select(t => t.AsType());
+            @object.ContainerAdapter.RegisterCollection(moduleRootObjectType, moduleTypes);
             return @object;
         }
     }
