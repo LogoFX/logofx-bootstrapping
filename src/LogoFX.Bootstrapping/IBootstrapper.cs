@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Reflection;
+using Solid.Bootstrapping;
+using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
@@ -8,7 +10,7 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Represents the bootstrapper.
     /// </summary>
-    public interface IBootstrapper
+    public interface IBootstrapper : IInitializable
     {
         /// <summary>
         /// Gets the composition modules.
@@ -24,12 +26,7 @@ namespace LogoFX.Bootstrapping
         /// <value>
         /// The assemblies.
         /// </value>
-        Assembly[] Assemblies { get; }
-
-        /// <summary>
-        /// Starts the bootstrapping.
-        /// </summary>
-        void Initialize();        
+        Assembly[] Assemblies { get; }               
 
         /// <summary>
         /// Uses the specified middleware.
@@ -46,16 +43,10 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TRootObject">The type of the root object.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="IBootstrapper" />
-    public interface IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> : IBootstrapper
-    {
-        /// <summary>
-        /// Gets the container adapter.
-        /// </summary>
-        /// <value>
-        /// The container adapter.
-        /// </value>
-        TIocContainerAdapter ContainerAdapter { get; }
-
+    public interface IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> : 
+        IBootstrapper, IHaveContainerAdapter<TIocContainerAdapter>
+        where TIocContainerAdapter : IIocContainer
+    {        
         /// <summary>
         /// Uses the specified middleware.
         /// </summary>
@@ -73,16 +64,9 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
     /// <seealso cref="IBootstrapperWithContainerAdapter{TRootObject, TIocContainerAdapter}" />
     public interface IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> : 
-        IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>
-    {
-        /// <summary>
-        /// Gets the container.
-        /// </summary>
-        /// <value>
-        /// The container.
-        /// </value>
-        TIocContainer Container { get; }
-
+        IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>, IHaveContainer<TIocContainer>
+        where TIocContainerAdapter : IIocContainer
+    {        
         /// <summary>
         /// Uses the specified middleware.
         /// </summary>
