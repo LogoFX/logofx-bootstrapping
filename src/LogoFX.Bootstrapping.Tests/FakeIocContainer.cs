@@ -160,9 +160,9 @@ namespace LogoFX.Bootstrapping.Tests
         
     }
 
-    class FakeBootstrapperWithContainerAdapter : IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>
+    class FakeBootstrapperWithContainerAdapter : IBootstrapperWithContainerAdapter<FakeIocContainer>
     {        
-        public IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>> middleware)
+        public IBootstrapperWithContainerAdapter<FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<FakeIocContainer>> middleware)
         {
             throw new NotImplementedException();
         }
@@ -180,16 +180,17 @@ namespace LogoFX.Bootstrapping.Tests
         }
 
         public FakeIocContainer ContainerAdapter { get; internal set; }
+        public event EventHandler InitializationCompleted;
     }
 
-    class FakeBootstrapperWithContainer : IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer>
+    class FakeBootstrapperWithContainer : IBootstrapperWithContainer<FakeIocContainer, FakeContainer>
     {
-        public IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>> middleware)
+        public IBootstrapperWithContainerAdapter<FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<FakeIocContainer>> middleware)
         {
             throw new NotImplementedException();
         }
 
-        public IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer> Use(IMiddleware<IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer>> middleware)
+        public IBootstrapperWithContainer<FakeIocContainer, FakeContainer> Use(IMiddleware<IBootstrapperWithContainer<FakeIocContainer, FakeContainer>> middleware)
         {
             throw new NotImplementedException();
         }
@@ -208,5 +209,6 @@ namespace LogoFX.Bootstrapping.Tests
 
         public FakeIocContainer ContainerAdapter { get; internal set; }
         public FakeContainer Container { get; internal set; }
+        public event EventHandler InitializationCompleted;
     }
 }

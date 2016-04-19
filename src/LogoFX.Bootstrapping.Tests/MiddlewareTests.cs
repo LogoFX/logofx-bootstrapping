@@ -17,14 +17,9 @@ namespace LogoFX.Bootstrapping.Tests
                 ContainerAdapter = container
             };
             
-            var middleware = new RegisterCoreMiddleware<RootObject, FakeIocContainer>();
+            var middleware = new RegisterContainerMiddleware<FakeIocContainer>();
             middleware.Apply(bootstrapper);
-
-            var registrations = container.Registrations;
-            var rootObjectRegistration = registrations.First();
-            rootObjectRegistration.InterfaceType.ShouldBe(typeof(RootObject));
-            rootObjectRegistration.ImplementationType.ShouldBe(typeof(RootObject));
-            rootObjectRegistration.IsSingleton.ShouldBe(true);
+            
             var instances = container.Instances;
             var actualTypeContainerRegistration = instances.First();
             actualTypeContainerRegistration.Instance.ShouldBe(container);
@@ -49,7 +44,7 @@ namespace LogoFX.Bootstrapping.Tests
                 }
             };
 
-            var middleware = new RegisterCompositionModulesMiddleware<RootObject, FakeIocContainer>();
+            var middleware = new RegisterCompositionModulesMiddleware<FakeIocContainer>();
             middleware.Apply(bootstrapper);
 
             var registrations = container.Registrations;
@@ -76,7 +71,7 @@ namespace LogoFX.Bootstrapping.Tests
                 }
             };
 
-            var middleware = new RegisterCompositionModulesMiddleware<RootObject, FakeIocContainer, FakeContainer>();
+            var middleware = new RegisterCompositionModulesMiddleware<FakeIocContainer, FakeContainer>();
             middleware.Apply(bootstrapper);
 
             var registrations = container.Registrations;

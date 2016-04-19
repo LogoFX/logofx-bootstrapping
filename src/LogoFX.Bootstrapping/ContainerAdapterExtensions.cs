@@ -12,15 +12,13 @@ namespace LogoFX.Bootstrapping
     public static class ContainerAdapterExtensions
     {
         /// <summary>
-        /// Registers the ioc container adapter and root object.
+        /// Registers the ioc container adapter.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        public static void RegisterCore<TRootObject, TIocContainerAdapter>(
+        public static void RegisterContainer<TIocContainerAdapter>(
             this TIocContainerAdapter iocContainerAdapter)
-            where TIocContainerAdapter : class, IIocContainer 
-            where TRootObject : class
-        {
-            iocContainerAdapter.RegisterSingleton<TRootObject, TRootObject>();
+            where TIocContainerAdapter : class, IIocContainer             
+        {            
             iocContainerAdapter.RegisterInstance(iocContainerAdapter);
             iocContainerAdapter.RegisterInstance<IIocContainer>(iocContainerAdapter);
         }
@@ -43,7 +41,6 @@ namespace LogoFX.Bootstrapping
                 new ContainerPlainRegistrationMiddleware<TIocContainer>(modules),
                 new ContainerHierarchicalRegistrationMiddleware<TIocContainer>(modules)
             });
-
             MiddlewareApplier.ApplyMiddlewares(iocContainer, middlewares);
         }
     }

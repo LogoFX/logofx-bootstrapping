@@ -7,13 +7,11 @@ using Solid.Practices.Middleware;
 namespace LogoFX.Bootstrapping
 {
     /// <summary>
-    /// Registers the core application components (root object, ioc container etc.) into the ioc container adapter.
+    /// Registers the ioc container adapter.
     /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterCoreMiddleware<TRootObject, TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>
-        where TRootObject : class
+    public class RegisterContainerMiddleware<TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>       
         where TIocContainerAdapter : class, IIocContainer
     {
         /// <summary>
@@ -21,22 +19,20 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
-            @object.ContainerAdapter.RegisterCore<TRootObject, TIocContainerAdapter>();
+            @object.ContainerAdapter.RegisterContainer();
             return @object;
         }
     }
-
+    
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>
-        where TRootObject : class
+    public class RegisterCompositionModulesMiddleware<TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>        
         where TIocContainerAdapter : class, IIocContainer
     {
         /// <summary>
@@ -44,8 +40,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
             @object.ContainerAdapter.RegisterContainerAdapterCompositionModules(@object.Modules);
             return @object;
@@ -54,13 +50,11 @@ namespace LogoFX.Bootstrapping
 
     /// <summary>
     /// Registers composition modules into the ioc container.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
-    public class RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter, TIocContainer> :
-        IMiddleware<IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>>
-        where TRootObject : class
+    public class RegisterCompositionModulesMiddleware<TIocContainerAdapter, TIocContainer> :
+        IMiddleware<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>        
         where TIocContainerAdapter : class, IIocContainer
         where TIocContainer : class
     {
@@ -69,8 +63,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> Apply(
-            IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> @object)
+        public IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> Apply(
+            IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> @object)
         {
             @object.Container.RegisterContainerCompositionModules(@object.Modules);
             return @object;
@@ -81,17 +75,16 @@ namespace LogoFX.Bootstrapping
     /// Registers the root objects of the modules. This is used in case of 
     /// loosely coupled module-oriented application where the modules have their own dependencies 
     /// that need to be injected during their creation.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public class RegisterModuleRootObjectsMiddleware<TRootObject, TIocContainerAdapter> : 
-        IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>
+    public class RegisterModuleRootObjectsMiddleware<TIocContainerAdapter> : 
+        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
     {
         private readonly Type _moduleRootObjectType;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TRootObject, TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="moduleRootObjectType">The type of the module root object.</param>
         public RegisterModuleRootObjectsMiddleware(Type moduleRootObjectType)
@@ -104,8 +97,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns/>
-        public IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>
-            Apply(IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
+            Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {            
             var typeInfo = _moduleRootObjectType.GetTypeInfo();
             var moduleTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>

@@ -12,13 +12,8 @@ namespace LogoFX.Bootstrapping.Tests
         public void WhenCoreRegistrationIsInvoked_ThenCoreElementsAreRegistered()
         {
             var container = new FakeIocContainer();
-            container.RegisterCore<RootObject, FakeIocContainer>();
-
-            var registrations = container.Registrations;
-            var rootObjectRegistration = registrations.First();
-            rootObjectRegistration.InterfaceType.ShouldBe(typeof(RootObject));
-            rootObjectRegistration.ImplementationType.ShouldBe(typeof(RootObject));
-            rootObjectRegistration.IsSingleton.ShouldBe(true);
+            container.RegisterContainer();
+            
             var instances = container.Instances;
             var actualTypeContainerRegistration = instances.First();
             actualTypeContainerRegistration.Instance.ShouldBe(container);
