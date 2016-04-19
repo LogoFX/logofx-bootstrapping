@@ -41,7 +41,6 @@
     <Compile Include="ContainerAdapterExtensionsTests.cs" />
     <Compile Include="ContainerExtensionsTests.cs" />
     <Compile Include="FakeIocContainer.cs" />
-    <Compile Include="IDependency.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransientCompositionModule.cs" />
     <Compile Include="TransientDependency.cs" />
