@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -82,13 +83,22 @@ namespace LogoFX.Bootstrapping
     /// that need to be injected during their creation.
     /// </summary>
     /// <typeparam name="TRootObject">The type of the root object.</typeparam>
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    /// <typeparam name="TModuleRootObject">The type of the module root object.</typeparam>    
-    public class RegisterModuleRootObjectsMiddleware<TRootObject, TIocContainerAdapter, 
-        TModuleRootObject> : 
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    public class RegisterModuleRootObjectsMiddleware<TRootObject, TIocContainerAdapter> : 
         IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
     {
+        private readonly Type _moduleRootObjectType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TRootObject, TIocContainerAdapter}"/> class.
+        /// </summary>
+        /// <param name="moduleRootObjectType">The type of the module root object.</param>
+        public RegisterModuleRootObjectsMiddleware(Type moduleRootObjectType)
+        {
+            _moduleRootObjectType = moduleRootObjectType;
+        }
+
         /// <summary>
         /// Applies the middleware on the specified object.
         /// </summary>
@@ -96,13 +106,12 @@ namespace LogoFX.Bootstrapping
         /// <returns/>
         public IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>
             Apply(IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> @object)
-        {
-            var moduleRootObjectType = typeof (TModuleRootObject);
-            var typeInfo = moduleRootObjectType.GetTypeInfo();
+        {            
+            var typeInfo = _moduleRootObjectType.GetTypeInfo();
             var moduleTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>
                 t.IsInterface == false && t.IsAbstract == false &&
                 typeInfo.IsAssignableFrom(t)).Select(t => t.AsType());
-            @object.ContainerAdapter.RegisterCollection(moduleRootObjectType, moduleTypes);
+            @object.ContainerAdapter.RegisterCollection(_moduleRootObjectType, moduleTypes);
             return @object;
         }
     }

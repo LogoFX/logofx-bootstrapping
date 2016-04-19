@@ -1,3 +1,4 @@
+using System;
 using Solid.Practices.IoC;
 
 namespace LogoFX.Bootstrapping
@@ -6,23 +7,24 @@ namespace LogoFX.Bootstrapping
     /// Bootstrapper extension methods.
     /// </summary>
     public static class BootstrapperExtensions
-    {        
+    {
         /// <summary>
         /// Uses the module root objects registration middleware.
         /// </summary>
         /// <typeparam name="TRootObject">The type of the root object.</typeparam>
-        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>        
-        /// <typeparam name="TModuleRootObject">The type of the module root object.</typeparam>
+        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>                
         /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <param name="moduleRootObjectType">The type of module root object.</param>
         /// <returns></returns>
         public static IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>
-            UseModuleRootObjectsRegistration<TRootObject, TIocContainerAdapter, TModuleRootObject>(
-            this IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> bootstrapper)
+            UseModuleRootObjectsRegistration<TRootObject, TIocContainerAdapter>(
+            this IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> bootstrapper,
+            Type moduleRootObjectType)
             where TIocContainerAdapter : IIocContainer
         {
             bootstrapper.Use(
                 new RegisterModuleRootObjectsMiddleware
-                    <TRootObject, TIocContainerAdapter, TModuleRootObject>());
+                    <TRootObject, TIocContainerAdapter>(moduleRootObjectType));
             return bootstrapper;
         }
     }
