@@ -71,7 +71,7 @@ namespace LogoFX.Bootstrapping
         public IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> Apply(
             IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> @object)
         {
-            @object.RegisterContainerCompositionModules(@object.Modules);
+            @object.Container.RegisterContainerCompositionModules(@object.Modules);
             return @object;
         }
     }

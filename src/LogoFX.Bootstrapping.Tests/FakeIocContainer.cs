@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using Solid.Practices.IoC;
+using Solid.Practices.Middleware;
+using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping.Tests
 {
@@ -155,5 +158,55 @@ namespace LogoFX.Bootstrapping.Tests
     class RootObject
     {
         
+    }
+
+    class FakeBootstrapperWithContainerAdapter : IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>
+    {        
+        public IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ICompositionModule> Modules { get; internal set; }
+        public Assembly[] Assemblies { get; }
+        public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FakeIocContainer ContainerAdapter { get; internal set; }
+    }
+
+    class FakeBootstrapperWithContainer : IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer>
+    {
+        public IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<RootObject, FakeIocContainer>> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer> Use(IMiddleware<IBootstrapperWithContainer<RootObject, FakeIocContainer, FakeContainer>> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Initialize()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ICompositionModule> Modules { get; internal set; }
+        public Assembly[] Assemblies { get; }
+        public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FakeIocContainer ContainerAdapter { get; internal set; }
+        public FakeContainer Container { get; internal set; }
     }
 }
