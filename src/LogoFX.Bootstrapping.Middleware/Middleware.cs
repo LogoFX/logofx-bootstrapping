@@ -80,16 +80,16 @@ namespace LogoFX.Bootstrapping
     public class RegisterModuleRootObjectsMiddleware<TIocContainerAdapter> : 
         IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
-    {
-        private readonly Type _moduleRootObjectType;
+    {        
+        private readonly IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>> _innerMiddleware;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="moduleRootObjectType">The type of the module root object.</param>
         public RegisterModuleRootObjectsMiddleware(Type moduleRootObjectType)
-        {
-            _moduleRootObjectType = moduleRootObjectType;
+        {     
+            _innerMiddleware = new RegisterCollectionMiddleware<TIocContainerAdapter>(moduleRootObjectType);
         }
 
         /// <summary>
@@ -99,12 +99,45 @@ namespace LogoFX.Bootstrapping
         /// <returns/>
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
             Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
-        {            
-            var typeInfo = _moduleRootObjectType.GetTypeInfo();
-            var moduleTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>
+        {
+            return _innerMiddleware.Apply(@object);
+        }
+    }
+
+    /// <summary>
+    /// Registers collection of services. This is used in case of 
+    /// loosely coupled module-oriented application where the services are defined in separate assemblies 
+    /// and/or are otherwise invisible.
+    /// </summary>    
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    public class RegisterCollectionMiddleware<TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
+        where TIocContainerAdapter : IIocContainer
+    {
+        private readonly Type _serviceContractType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TIocContainerAdapter}"/> class.
+        /// </summary>
+        /// <param name="serviceContractType">The type of the module root object.</param>
+        public RegisterCollectionMiddleware(Type serviceContractType)
+        {
+            _serviceContractType = serviceContractType;
+        }
+
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns/>
+        public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
+            Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        {
+            var typeInfo = _serviceContractType.GetTypeInfo();
+            var serviceTypes = @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Where(t =>
                 t.IsInterface == false && t.IsAbstract == false &&
                 typeInfo.IsAssignableFrom(t)).Select(t => t.AsType());
-            @object.ContainerAdapter.RegisterCollection(_moduleRootObjectType, moduleTypes);
+            @object.ContainerAdapter.RegisterCollection(_serviceContractType, serviceTypes);
             return @object;
         }
     }

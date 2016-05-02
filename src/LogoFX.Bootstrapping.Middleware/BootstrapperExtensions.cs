@@ -26,5 +26,23 @@ namespace LogoFX.Bootstrapping
                     <TIocContainerAdapter>(moduleRootObjectType));
             return bootstrapper;
         }
+
+        /// <summary>
+        /// Uses the collection registration middleware.
+        /// </summary>
+        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <param name="serviceContractType">The type of the service contract.</param>
+        /// <returns></returns>
+        public static IBootstrapperWithContainerAdapter<TIocContainerAdapter>
+            UseCollectionRegistration<TIocContainerAdapter>(
+            this IBootstrapperWithContainerAdapter<TIocContainerAdapter> bootstrapper,
+            Type serviceContractType)
+            where TIocContainerAdapter : IIocContainer
+        {
+            bootstrapper.Use(
+                new RegisterCollectionMiddleware<TIocContainerAdapter>(serviceContractType));
+            return bootstrapper;
+        }
     }
 }
