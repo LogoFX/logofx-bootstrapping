@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Solid.Bootstrapping;
+using Solid.Extensibility;
 using Solid.Practices.IoC;
-using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
@@ -22,7 +22,7 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Represents the bootstrapper.
     /// </summary>
-    public interface IBootstrapper : IInitializable, IInitializationInfo
+    public interface IBootstrapper : IInitializable, IInitializationInfo, IExtensible<IBootstrapper>
     {
         /// <summary>
         /// Gets the composition modules.
@@ -38,15 +38,7 @@ namespace LogoFX.Bootstrapping
         /// <value>
         /// The assemblies.
         /// </value>
-        Assembly[] Assemblies { get; }               
-
-        /// <summary>
-        /// Uses the specified middleware.
-        /// </summary>
-        /// <param name="middleware">The middleware.</param>
-        /// <returns></returns>
-        IBootstrapper Use(
-            IMiddleware<IBootstrapper> middleware);
+        Assembly[] Assemblies { get; }                       
     }
 
     /// <summary>
@@ -55,16 +47,9 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="IBootstrapper" />
     public interface IBootstrapperWithContainerAdapter<TIocContainerAdapter> : 
-        IBootstrapper, IHaveContainerAdapter<TIocContainerAdapter>
+        IBootstrapper, IHaveContainerAdapter<TIocContainerAdapter>, IExtensible<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
-    {        
-        /// <summary>
-        /// Uses the specified middleware.
-        /// </summary>
-        /// <param name="middleware">The middleware.</param>
-        /// <returns></returns>
-        IBootstrapperWithContainerAdapter<TIocContainerAdapter> Use(
-            IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>> middleware);
+    {                
     }
 
     /// <summary>
@@ -74,15 +59,9 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
     /// <seealso cref="IBootstrapperWithContainerAdapter{TIocContainerAdapter}" />
     public interface IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> : 
-        IBootstrapperWithContainerAdapter<TIocContainerAdapter>, IHaveContainer<TIocContainer>
+        IBootstrapperWithContainerAdapter<TIocContainerAdapter>, IHaveContainer<TIocContainer>, 
+        IExtensible<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>
         where TIocContainerAdapter : IIocContainer
-    {        
-        /// <summary>
-        /// Uses the specified middleware.
-        /// </summary>
-        /// <param name="middleware">The middleware.</param>
-        /// <returns></returns>
-        IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> Use(
-            IMiddleware<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>> middleware);
+    {               
     }    
 }
