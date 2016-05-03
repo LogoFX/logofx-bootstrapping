@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Shouldly;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
@@ -79,6 +81,26 @@ namespace LogoFX.Bootstrapping.Tests
             dependencyRegistration.ImplementationType.ShouldBe(typeof(TransientDependency));
             dependencyRegistration.InterfaceType.ShouldBe(typeof(IDependency));
             dependencyRegistration.IsSingleton.ShouldBe(false);
+        }
+
+        [Fact]
+        public void
+            GivenThereAreTwoServicesThatImplementTheContract_WhenRegisterCollectionMiddlewareIsApplied_ThenBothServicesAreRegistered
+            ()
+        {
+            var containerAdapter = new FakeIocContainer();            
+            var bootstrapper = new FakeBootstrapperWithContainerAdapter
+            {
+                ContainerAdapter = containerAdapter,                
+                Assemblies = new[] { typeof(FakeIocContainer).GetTypeInfo().Assembly }
+            };
+
+            var middleware = new RegisterCollectionMiddleware<FakeIocContainer>(typeof (IServiceContract));
+            middleware.Apply(bootstrapper);
+
+            var registrations = containerAdapter.Registrations;
+            var dependencyRegistration = registrations.First();
+            (dependencyRegistration.InterfaceType == typeof(IEnumerable<IServiceContract>)).ShouldBeTrue();
         }
     }
 }

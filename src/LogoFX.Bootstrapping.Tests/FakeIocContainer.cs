@@ -99,7 +99,7 @@ namespace LogoFX.Bootstrapping.Tests
 
         public void RegisterCollection<TService>(IEnumerable<Type> dependencyTypes) where TService : class
         {
-            throw new NotImplementedException();
+            _registrations.Add(new ContainerEntry(typeof(IEnumerable<TService>), null, false));
         }
 
         public void RegisterCollection<TService>(IEnumerable<TService> dependencies) where TService : class
@@ -109,7 +109,7 @@ namespace LogoFX.Bootstrapping.Tests
 
         public void RegisterCollection(Type dependencyType, IEnumerable<Type> dependencyTypes)
         {
-            throw new NotImplementedException();
+            _registrations.Add(new ContainerEntry(typeof(IEnumerable<>).MakeGenericType(dependencyType), null, false));
         }
 
         public void RegisterCollection(Type dependencyType, IEnumerable<object> dependencies)
@@ -173,7 +173,7 @@ namespace LogoFX.Bootstrapping.Tests
         }
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
-        public Assembly[] Assemblies { get; }
+        public Assembly[] Assemblies { get; internal set; }
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
@@ -201,7 +201,7 @@ namespace LogoFX.Bootstrapping.Tests
         }
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
-        public Assembly[] Assemblies { get; }
+        public Assembly[] Assemblies { get; internal set; }
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
