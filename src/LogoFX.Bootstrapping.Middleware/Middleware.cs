@@ -51,39 +51,6 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers the root objects of the modules. This is used in case of 
-    /// loosely coupled modular application where the modules have their own dependencies 
-    /// that need to be injected during their creation.
-    /// </summary>    
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public class RegisterModuleRootObjectsMiddleware<TIocContainerAdapter> : 
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
-        where TIocContainerAdapter : IIocContainer
-    {        
-        private readonly IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>> _innerMiddleware;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterModuleRootObjectsMiddleware{TIocContainerAdapter}"/> class.
-        /// </summary>
-        /// <param name="moduleRootObjectType">The type of the module root object.</param>
-        public RegisterModuleRootObjectsMiddleware(Type moduleRootObjectType)
-        {     
-            _innerMiddleware = new RegisterCollectionMiddleware<TIocContainerAdapter>(moduleRootObjectType);
-        }
-
-        /// <summary>
-        /// Applies the middleware on the specified object.
-        /// </summary>
-        /// <param name="object">The object.</param>
-        /// <returns/>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
-            Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
-        {
-            return _innerMiddleware.Apply(@object);
-        }
-    }
-
-    /// <summary>
     /// Registers collection of services. This is used in case of 
     /// loosely coupled modular application where the services are defined in separate assemblies 
     /// and/or are otherwise private.
