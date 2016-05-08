@@ -9,25 +9,6 @@ namespace LogoFX.Bootstrapping
     public static class BootstrapperExtensions
     {
         /// <summary>
-        /// Uses the module root objects registration middleware.
-        /// </summary>        
-        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>                
-        /// <param name="bootstrapper">The bootstrapper.</param>        
-        /// <param name="moduleRootObjectType">The type of module root object.</param>
-        /// <returns></returns>
-        public static IBootstrapperWithContainerAdapter<TIocContainerAdapter>
-            UseModuleRootObjectsRegistration<TIocContainerAdapter>(
-            this IBootstrapperWithContainerAdapter<TIocContainerAdapter> bootstrapper,            
-            Type moduleRootObjectType)
-            where TIocContainerAdapter : IIocContainer
-        {
-            bootstrapper.Use(
-                new RegisterModuleRootObjectsMiddleware
-                    <TIocContainerAdapter>(moduleRootObjectType));
-            return bootstrapper;
-        }
-
-        /// <summary>
         /// Uses the collection registration middleware.
         /// </summary>
         /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
@@ -43,6 +24,23 @@ namespace LogoFX.Bootstrapping
             bootstrapper.Use(
                 new RegisterCollectionMiddleware<TIocContainerAdapter>(serviceContractType));
             return bootstrapper;
+        }
+
+        /// <summary>
+        /// Uses the resolver middleware.
+        /// </summary>
+        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <param name="resolver">The resolver.</param>
+        /// <returns></returns>
+        public static IBootstrapperWithContainerAdapter<TIocContainerAdapter>
+            UseResolver<TIocContainerAdapter>(
+            this IBootstrapperWithContainerAdapter<TIocContainerAdapter> bootstrapper,
+            IIocContainerResolver resolver) 
+            where TIocContainerAdapter : class, IIocContainer
+        {
+            bootstrapper.Use(new RegisterResolverMiddleware<TIocContainerAdapter>(resolver));
+            return bootstrapper;            
         }
     }
 }

@@ -10,19 +10,7 @@ namespace LogoFX.Bootstrapping
     /// The ioc container adapter extension methods.
     /// </summary>
     public static class ContainerAdapterExtensions
-    {
-        /// <summary>
-        /// Registers the ioc container adapter.
-        /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        public static void RegisterContainer<TIocContainerAdapter>(
-            this TIocContainerAdapter iocContainerAdapter)
-            where TIocContainerAdapter : class, IIocContainer             
-        {            
-            iocContainerAdapter.RegisterInstance(iocContainerAdapter);
-            iocContainerAdapter.RegisterInstance<IIocContainer>(iocContainerAdapter);
-        }
-
+    {        
         /// <summary>
         /// Registers the composition modules into the ioc container adapter.
         /// </summary>
@@ -32,12 +20,12 @@ namespace LogoFX.Bootstrapping
         public static void RegisterContainerAdapterCompositionModules<TIocContainer>(
             this TIocContainer iocContainer,
             IEnumerable<ICompositionModule> compositionModules)
-            where TIocContainer : class, IIocContainer
+            where TIocContainer : class, IIocContainerRegistrator
         {
             var modules = compositionModules as ICompositionModule[] ?? compositionModules.ToArray();
             var middlewares = new List<IMiddleware<TIocContainer>>(new IMiddleware<TIocContainer>[]
             {
-                new ContainerRegistrationMiddleware<TIocContainer, IIocContainer>(modules),
+                new ContainerRegistrationMiddleware<TIocContainer, IIocContainerRegistrator>(modules),
                 new ContainerPlainRegistrationMiddleware<TIocContainer>(modules),
                 new ContainerHierarchicalRegistrationMiddleware<TIocContainer>(modules)
             });

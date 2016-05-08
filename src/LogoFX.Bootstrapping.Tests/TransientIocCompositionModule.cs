@@ -3,11 +3,11 @@ using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping.Tests
 {
-    class TransientIocCompositionModule : ICompositionModule<IIocContainer>
+    class TransientIocCompositionModule : ICompositionModule<IIocContainerRegistrator>
     {
-        public void RegisterModule(IIocContainer iocContainer)
+        public void RegisterModule(IIocContainerRegistrator iocContainerRegistrator)
         {
-            iocContainer.RegisterTransient<IDependency, TransientDependency>();
+            iocContainerRegistrator.RegisterTransient<IDependency, TransientDependency>();
         }
     }
 }

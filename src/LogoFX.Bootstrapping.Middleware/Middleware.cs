@@ -5,28 +5,7 @@ using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
-{
-    /// <summary>
-    /// Registers the ioc container adapter.
-    /// </summary>
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterContainerMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>       
-        where TIocContainerAdapter : class, IIocContainer
-    {
-        /// <summary>
-        /// Applies the middleware on the specified object.
-        /// </summary>
-        /// <param name="object">The object.</param>
-        /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
-        {
-            @object.ContainerAdapter.RegisterContainer();
-            return @object;
-        }
-    }
-    
+{        
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
     /// </summary>    
@@ -132,9 +111,41 @@ namespace LogoFX.Bootstrapping
         /// <returns/>
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
             Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
-        {            
+        {
             RegistrationHelper.RegisterCollection(@object.ContainerAdapter, _serviceContractType,
-                @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));            
+                @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));         
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers the ioc container resolver.
+    /// </summary>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterResolverMiddleware<TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
+        where TIocContainerAdapter : class, IIocContainer
+    {
+        private readonly IIocContainerResolver _resolver;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware{TIocContainerAdapter}"/> class.
+        /// </summary>
+        /// <param name="resolver">The resolver.</param>
+        public RegisterResolverMiddleware(IIocContainerResolver resolver)
+        {
+            _resolver = resolver;
+        }
+
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        {
+            @object.ContainerAdapter.RegisterInstance(_resolver);
             return @object;
         }
     }

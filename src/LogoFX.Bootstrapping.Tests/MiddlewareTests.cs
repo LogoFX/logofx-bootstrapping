@@ -2,35 +2,13 @@
 using System.Linq;
 using System.Reflection;
 using Shouldly;
-using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 using Xunit;
 
 namespace LogoFX.Bootstrapping.Tests
 {
     public class MiddlewareTests
-    {
-        [Fact]
-        public void WhenRegisterCoreMiddlewareIsApplied_ThenCoreElementsAreRegistered()
-        {
-            var container = new FakeIocContainer();
-            var bootstrapper = new FakeBootstrapperWithContainerAdapter
-            {
-                ContainerAdapter = container
-            };
-            
-            var middleware = new RegisterContainerMiddleware<FakeIocContainer>();
-            middleware.Apply(bootstrapper);
-            
-            var instances = container.Instances;
-            var actualTypeContainerRegistration = instances.First();
-            actualTypeContainerRegistration.Instance.ShouldBe(container);
-            actualTypeContainerRegistration.InstanceType.ShouldBe(typeof(FakeIocContainer));
-            var interfaceTypeContainerRegistration = instances.Last();
-            interfaceTypeContainerRegistration.Instance.ShouldBe(container);
-            interfaceTypeContainerRegistration.InstanceType.ShouldBe(typeof(IIocContainer));
-        }
-
+    {        
         [Fact]
         public void
             GivenCompositionModuleRegistersDependencyAsSingleton_WhenRegisterContainerAdapterCompositionModulesMiddlewareIsApplied_ThenDependencyIsRegistered
