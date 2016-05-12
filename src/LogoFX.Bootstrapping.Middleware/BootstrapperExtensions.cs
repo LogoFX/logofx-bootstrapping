@@ -1,5 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Solid.Bootstrapping;
+using Solid.Extensibility;
 using Solid.Practices.IoC;
+using Solid.Practices.Middleware;
 
 namespace LogoFX.Bootstrapping
 {
@@ -41,6 +46,30 @@ namespace LogoFX.Bootstrapping
         {
             bootstrapper.Use(new RegisterResolverMiddleware<TIocContainerAdapter>(resolver));
             return bootstrapper;            
+        }
+
+        /// <summary>
+        /// Extends the bootstrapper's functionality by using the specified collection
+        /// of ioc container registrator middlewares.
+        /// </summary>
+        /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <param name="middlewares">The middlewares.</param>
+        /// <returns></returns>
+        public static TBootstrapper UseMany<TBootstrapper>(
+            this TBootstrapper bootstrapper,
+            IEnumerable<IMiddleware<IIocContainerRegistrator>> middlewares) 
+            where TBootstrapper : class, IHaveContainerRegistrator, IExtensible<TBootstrapper>
+        {
+            var bootstrapperMiddlewares =
+                middlewares.Select(
+                    t =>
+                        new UseContainerRegistratorMiddleware<TBootstrapper>(t));
+            foreach (var bootstrapperMiddleware in bootstrapperMiddlewares)
+            {
+                bootstrapper.Use(bootstrapperMiddleware);
+            }
+            return bootstrapper;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
@@ -113,6 +114,39 @@ namespace LogoFX.Bootstrapping
             IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
             @object.Registrator.RegisterInstance(_resolver);
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Extends the bootstrapper's functionality by using the 
+    /// specified ioc container registrator middleware.
+    /// </summary>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
+    public class UseContainerRegistratorMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
+        where TBootstrapper : class, IHaveContainerRegistrator
+    {
+        private readonly IMiddleware<IIocContainerRegistrator> _middleware;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="UseContainerRegistratorMiddleware{TBootstrapper}"/> class.
+        /// </summary>
+        /// <param name="middleware">The ioc container registrator middleware.</param>
+        public UseContainerRegistratorMiddleware(IMiddleware<IIocContainerRegistrator> middleware)
+        {
+            _middleware = middleware;
+        }
+
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public TBootstrapper Apply(
+            TBootstrapper @object)
+        {
+            _middleware.Apply(@object.Registrator);
             return @object;
         }
     }
