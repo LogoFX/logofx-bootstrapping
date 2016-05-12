@@ -47,7 +47,7 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="IBootstrapper" />
     public interface IBootstrapperWithContainerAdapter<TIocContainerAdapter> : 
-        IBootstrapper, IHaveContainerAdapter<TIocContainerAdapter>, IExtensible<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
+        IBootstrapper, IHaveContainerRegistrator, IExtensible<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
     {                
     }

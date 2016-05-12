@@ -179,7 +179,8 @@ namespace LogoFX.Bootstrapping.Tests
             throw new NotImplementedException();
         }
 
-        public FakeIocContainer ContainerAdapter { get; internal set; }
+        public IIocContainerRegistrator Registrator { get; internal set; }
+        public IIocContainerResolver Resolver { get; internal set; }
         public event EventHandler InitializationCompleted;
     }
 
@@ -207,7 +208,8 @@ namespace LogoFX.Bootstrapping.Tests
             throw new NotImplementedException();
         }
 
-        public FakeIocContainer ContainerAdapter { get; internal set; }
+        public IIocContainerRegistrator Registrator { get; internal set; }
+        public IIocContainerResolver Resolver { get; internal set; }
         public FakeContainer Container { get; internal set; }
         public event EventHandler InitializationCompleted;
     }

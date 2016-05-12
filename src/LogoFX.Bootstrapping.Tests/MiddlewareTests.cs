@@ -17,7 +17,7 @@ namespace LogoFX.Bootstrapping.Tests
             var container = new FakeIocContainer();
             var bootstrapper = new FakeBootstrapperWithContainerAdapter
             {
-                ContainerAdapter = container,
+                Registrator = container,
                 Modules = new ICompositionModule[]
                 {
                     new TransientIocCompositionModule()
@@ -43,7 +43,7 @@ namespace LogoFX.Bootstrapping.Tests
             var container = new FakeContainer();
             var bootstrapper = new FakeBootstrapperWithContainer
             {
-                ContainerAdapter = containerAdapter,
+                Registrator = containerAdapter,
                 Container = container,
                 Modules = new ICompositionModule[]
                 {
@@ -69,7 +69,7 @@ namespace LogoFX.Bootstrapping.Tests
             var containerAdapter = new FakeIocContainer();            
             var bootstrapper = new FakeBootstrapperWithContainerAdapter
             {
-                ContainerAdapter = containerAdapter,                
+                Registrator = containerAdapter,                
                 Assemblies = new[] { typeof(FakeIocContainer).GetTypeInfo().Assembly }
             };
 

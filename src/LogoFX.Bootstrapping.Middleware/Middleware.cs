@@ -22,7 +22,7 @@ namespace LogoFX.Bootstrapping
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
             IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
-            @object.ContainerAdapter.RegisterContainerAdapterCompositionModules(@object.Modules);
+            @object.Registrator.RegisterContainerAdapterCompositionModules(@object.Modules);
             return @object;
         }
     }
@@ -79,7 +79,7 @@ namespace LogoFX.Bootstrapping
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
             Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
-            RegistrationHelper.RegisterCollection(@object.ContainerAdapter, _serviceContractType,
+            RegistrationHelper.RegisterCollection(@object.Registrator, _serviceContractType,
                 @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));         
             return @object;
         }
@@ -112,7 +112,7 @@ namespace LogoFX.Bootstrapping
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
             IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
-            @object.ContainerAdapter.RegisterInstance(_resolver);
+            @object.Registrator.RegisterInstance(_resolver);
             return @object;
         }
     }
