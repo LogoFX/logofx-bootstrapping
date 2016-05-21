@@ -73,7 +73,7 @@ namespace LogoFX.Bootstrapping.Tests
                 Assemblies = new[] { typeof(FakeIocContainer).GetTypeInfo().Assembly }
             };
 
-            var middleware = new RegisterCollectionMiddleware<FakeIocContainer>(typeof (IServiceContract));
+            var middleware = new RegisterCollectionMiddleware(typeof (IServiceContract));
             middleware.Apply(bootstrapper);
 
             var registrations = containerAdapter.Registrations;

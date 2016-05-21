@@ -14,38 +14,75 @@ namespace LogoFX.Bootstrapping
     public static class BootstrapperExtensions
     {
         /// <summary>
-        /// Uses the collection registration middleware.
+        /// Applies the collection registration middleware.
         /// </summary>
-        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="serviceContractType">The type of the service contract.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerAdapter<TIocContainerAdapter>
-            UseCollectionRegistration<TIocContainerAdapter>(
-            this IBootstrapperWithContainerAdapter<TIocContainerAdapter> bootstrapper,
+        public static IBootstrapperWithContainerRegistrator
+            ApplyCollectionRegistration(
+            this IBootstrapperWithContainerRegistrator bootstrapper,
             Type serviceContractType)
-            where TIocContainerAdapter : IIocContainer
+        {
+            var middleware = new RegisterCollectionMiddleware(serviceContractType);
+            middleware.Apply(bootstrapper);
+            return bootstrapper;
+        }
+
+        /// <summary>
+        /// Applies the collection registration middleware.
+        /// </summary>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <typeparam name="TService">The type of the service contract.</typeparam>
+        /// <returns></returns>
+        public static IBootstrapperWithContainerRegistrator
+            ApplyCollectionRegistration<TService>(
+            this IBootstrapperWithContainerRegistrator bootstrapper)
+        {
+           return ApplyCollectionRegistration(bootstrapper, typeof(TService));
+        }
+
+        /// <summary>
+        /// Uses the collection registration middleware.
+        /// </summary>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <param name="serviceContractType">The type of the service contract.</param>
+        /// <returns></returns>
+        public static IBootstrapperWithContainerRegistrator
+            UseCollectionRegistration(
+            this IBootstrapperWithContainerRegistrator bootstrapper,
+            Type serviceContractType)
         {
             bootstrapper.Use(
-                new RegisterCollectionMiddleware<TIocContainerAdapter>(serviceContractType));
+                new RegisterCollectionMiddleware(serviceContractType));
             return bootstrapper;
         }
 
         /// <summary>
         /// Uses the resolver middleware.
         /// </summary>
-        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="resolver">The resolver.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerAdapter<TIocContainerAdapter>
-            UseResolver<TIocContainerAdapter>(
-            this IBootstrapperWithContainerAdapter<TIocContainerAdapter> bootstrapper,
-            IIocContainerResolver resolver) 
-            where TIocContainerAdapter : class, IIocContainer
+        public static IBootstrapperWithContainerRegistrator
+            UseResolver(
+            this IBootstrapperWithContainerRegistrator bootstrapper,
+            IIocContainerResolver resolver)
         {
             bootstrapper.Use(new RegisterResolverMiddleware(resolver));
             return bootstrapper;            
+        }
+
+        /// <summary>
+        /// Uses the bootstrapper composition middleware.
+        /// </summary>
+        /// <param name="bootstrapper">The bootstrapper.</param>
+        /// <returns></returns>
+        public static IBootstrapperWithContainerRegistrator UseBootstrapperComposition(
+           this IBootstrapperWithContainerRegistrator bootstrapper)
+        {
+            bootstrapper.Use(new RegisterBootstrapperCompositionModulesMiddleware());
+            return bootstrapper;
         }
 
         /// <summary>

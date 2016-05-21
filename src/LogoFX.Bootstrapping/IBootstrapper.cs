@@ -71,5 +71,5 @@ namespace LogoFX.Bootstrapping
         IExtensible<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>
         where TIocContainerAdapter : IIocContainer
     {               
-    }    
+    }
 }

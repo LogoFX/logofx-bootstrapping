@@ -38,6 +38,7 @@
     <Compile Include="ContainerRegistratorExtensions.cs" />
     <Compile Include="ContainerExtensions.cs" />
     <Compile Include="IBootstrapper.cs" />
+    <Compile Include="IBootstrapperCompositionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -50,19 +50,38 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
+    /// Registers the collection of <see cref="IBootstrapperCompositionModule"/> modules.
+    /// </summary>
+    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{IBootstrapperWithContainerRegistrator}" />
+    public class RegisterBootstrapperCompositionModulesMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns/>
+        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        {
+            foreach (var module in @object.Modules.OfType<IBootstrapperCompositionModule>())
+            {
+                module.RegisterModule(@object);
+            }
+            return @object;
+        }
+    }
+
+    /// <summary>
     /// Registers collection of services. This is used in case of 
     /// loosely coupled modular application where the services are defined in separate assemblies 
     /// and/or are otherwise private.
-    /// </summary>    
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public class RegisterCollectionMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
-        where TIocContainerAdapter : IIocContainer
+    /// </summary>
+    public class RegisterCollectionMiddleware :
+        IMiddleware<IBootstrapperWithContainerRegistrator>
     {
         private readonly Type _serviceContractType;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterCollectionMiddleware{TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="RegisterCollectionMiddleware"/> class.
         /// </summary>
         /// <param name="serviceContractType">The type of the module root object.</param>
         public RegisterCollectionMiddleware(Type serviceContractType)
@@ -75,8 +94,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns/>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter>
-            Apply(IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerRegistrator
+            Apply(IBootstrapperWithContainerRegistrator @object)
         {
             RegistrationHelper.RegisterCollection(@object.Registrator, _serviceContractType,
                 @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));         
@@ -112,7 +131,7 @@ namespace LogoFX.Bootstrapping
             @object.Registrator.RegisterInstance(_resolver);
             return @object;
         }
-    }
+    }    
 
     /// <summary>
     /// Extends the bootstrapper's functionality by using the 
