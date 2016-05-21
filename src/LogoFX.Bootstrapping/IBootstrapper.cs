@@ -42,12 +42,20 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
+    /// Represents bootstrapper with ioc container registrator.
+    /// </summary>
+    public interface IBootstrapperWithContainerRegistrator : IBootstrapper, IHaveContainerRegistrator, IExtensible<IBootstrapperWithContainerRegistrator>
+    {
+        
+    }
+
+    /// <summary>
     /// Represents bootstrapper with ioc container adapter.
     /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <seealso cref="IBootstrapper" />
     public interface IBootstrapperWithContainerAdapter<TIocContainerAdapter> : 
-        IBootstrapper, IHaveContainerRegistrator, IExtensible<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
+        IBootstrapperWithContainerRegistrator, IExtensible<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
         where TIocContainerAdapter : IIocContainer
     {                
     }

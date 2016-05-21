@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
@@ -182,6 +183,10 @@ namespace LogoFX.Bootstrapping.Tests
         public IIocContainerRegistrator Registrator { get; internal set; }
         public IIocContainerResolver Resolver { get; internal set; }
         public event EventHandler InitializationCompleted;
+        IBootstrapperWithContainerRegistrator IExtensible<IBootstrapperWithContainerRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithContainerRegistrator> middleware)
+        {
+            throw new NotImplementedException();
+        }        
     }
 
     class FakeBootstrapperWithContainer : IBootstrapperWithContainer<FakeIocContainer, FakeContainer>
@@ -204,6 +209,11 @@ namespace LogoFX.Bootstrapping.Tests
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
         public Assembly[] Assemblies { get; internal set; }
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
+        {
+            throw new NotImplementedException();
+        }
+
+        IBootstrapperWithContainerRegistrator IExtensible<IBootstrapperWithContainerRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithContainerRegistrator> middleware)
         {
             throw new NotImplementedException();
         }

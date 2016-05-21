@@ -38,7 +38,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContainerAdapterExtensionsTests.cs" />
+    <Compile Include="ContainerRegistratorExtensionsTests.cs" />
     <Compile Include="ContainerExtensionsTests.cs" />
     <Compile Include="FakeIocContainer.cs" />
     <Compile Include="MiddlewareTests.cs" />

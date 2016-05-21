@@ -7,15 +7,15 @@ using Solid.Practices.Modularity;
 namespace LogoFX.Bootstrapping
 {
     /// <summary>
-    /// The ioc container adapter extension methods.
+    /// The ioc container registrator extension methods.
     /// </summary>
-    public static class ContainerAdapterExtensions
+    public static class ContainerRegistratorExtensions
     {        
         /// <summary>
-        /// Registers the composition modules into the ioc container adapter.
+        /// Registers the composition modules into the ioc container registrator.
         /// </summary>
-        /// <typeparam name="TIocContainer">The type of the ioc container adapter.</typeparam>
-        /// <param name="iocContainer">The ioc container adapter.</param>
+        /// <typeparam name="TIocContainer">The type of the ioc container registrator.</typeparam>
+        /// <param name="iocContainer">The ioc container registrator.</param>
         /// <param name="compositionModules">The composition modules.</param>
         public static void RegisterContainerAdapterCompositionModules<TIocContainer>(
             this TIocContainer iocContainer,

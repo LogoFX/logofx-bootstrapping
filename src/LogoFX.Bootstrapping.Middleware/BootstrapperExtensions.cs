@@ -44,7 +44,7 @@ namespace LogoFX.Bootstrapping
             IIocContainerResolver resolver) 
             where TIocContainerAdapter : class, IIocContainer
         {
-            bootstrapper.Use(new RegisterResolverMiddleware<TIocContainerAdapter>(resolver));
+            bootstrapper.Use(new RegisterResolverMiddleware(resolver));
             return bootstrapper;            
         }
 

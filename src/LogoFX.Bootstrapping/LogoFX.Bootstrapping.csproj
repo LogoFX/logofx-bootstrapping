@@ -35,7 +35,7 @@
     <DocumentationFile>..\bin\Release\LogoFX.Bootstrapping.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ContainerAdapterExtensions.cs" />
+    <Compile Include="ContainerRegistratorExtensions.cs" />
     <Compile Include="ContainerExtensions.cs" />
     <Compile Include="IBootstrapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

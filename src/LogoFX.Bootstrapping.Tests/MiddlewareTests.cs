@@ -24,7 +24,7 @@ namespace LogoFX.Bootstrapping.Tests
                 }
             };
 
-            var middleware = new RegisterCompositionModulesMiddleware<FakeIocContainer>();
+            var middleware = new RegisterCompositionModulesMiddleware();
             middleware.Apply(bootstrapper);
 
             var registrations = container.Registrations;

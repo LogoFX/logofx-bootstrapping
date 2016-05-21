@@ -5,7 +5,7 @@ using Xunit;
 
 namespace LogoFX.Bootstrapping.Tests
 {
-    public class ContainerAdapterExtensionsTests
+    public class ContainerRegistratorExtensionsTests
     {        
         [Fact]
         public void

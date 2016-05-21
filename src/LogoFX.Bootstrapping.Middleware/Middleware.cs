@@ -6,22 +6,20 @@ using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
-{        
+{
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
-    /// </summary>    
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterCompositionModulesMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>        
-        where TIocContainerAdapter : class, IIocContainer
+    /// </summary>
+    public class RegisterCompositionModulesMiddleware :
+        IMiddleware<IBootstrapperWithContainerRegistrator>
     {
         /// <summary>
         /// Applies the middleware on the specified object.
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerRegistrator Apply(
+            IBootstrapperWithContainerRegistrator @object)
         {
             @object.Registrator.RegisterContainerAdapterCompositionModules(@object.Modules);
             return @object;
@@ -89,15 +87,13 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Registers the ioc container resolver.
     /// </summary>
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterResolverMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>
-        where TIocContainerAdapter : class, IIocContainer
+    public class RegisterResolverMiddleware :
+        IMiddleware<IBootstrapperWithContainerRegistrator>
     {
         private readonly IIocContainerResolver _resolver;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware{TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware"/> class.
         /// </summary>
         /// <param name="resolver">The resolver.</param>
         public RegisterResolverMiddleware(IIocContainerResolver resolver)
@@ -110,8 +106,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerRegistrator Apply(
+            IBootstrapperWithContainerRegistrator @object)
         {
             @object.Registrator.RegisterInstance(_resolver);
             return @object;
