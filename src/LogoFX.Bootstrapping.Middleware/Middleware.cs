@@ -7,7 +7,22 @@ using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
-{    
+{
+    /// <summary>
+    /// Registers composition modules into the ioc container adapter.
+    /// </summary>    
+    public class RegisterCompositionModulesMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>        
+    {
+        /// <summary>Applies the middleware on the specified object.</summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        {
+            var internalMiddleware = new RegisterCompositionModulesMiddleware<IBootstrapperWithContainerRegistrator>();
+            return internalMiddleware.Apply(@object);
+        }
+    }
+
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
     /// </summary>
@@ -43,6 +58,31 @@ namespace LogoFX.Bootstrapping
         /// <returns></returns>
         public IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> Apply(
             IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer> @object)
+        {
+            var internalMiddleware =
+                new RegisterContainerCompositionModulesMiddleware
+                    <IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>, TIocContainer>();
+            return internalMiddleware.Apply(@object);
+        }
+    }
+
+    /// <summary>
+    /// Registers composition modules into the ioc container.
+    /// </summary>
+    /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>    
+    public class RegisterContainerCompositionModulesMiddleware<TBootstrapper, TIocContainer> :
+        IMiddleware<TBootstrapper>
+        where TBootstrapper : class, IHaveContainer<TIocContainer>, ICompositionModulesProvider 
+        where TIocContainer : class
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public TBootstrapper Apply(
+            TBootstrapper @object)
         {
             @object.Container.RegisterContainerCompositionModules(@object.Modules);
             return @object;
@@ -97,9 +137,70 @@ namespace LogoFX.Bootstrapping
         public IBootstrapperWithContainerRegistrator
             Apply(IBootstrapperWithContainerRegistrator @object)
         {
+            var internalMiddleware =
+                new RegisterCollectionMiddleware<IBootstrapperWithContainerRegistrator>(_serviceContractType);
+            return internalMiddleware.Apply(@object);
+        }
+    }
+
+    /// <summary>
+    /// Registers collection of services. This is used in case of 
+    /// loosely coupled modular application where the services are defined in separate assemblies 
+    /// and/or are otherwise private.
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>    
+    /// </summary>
+    public class RegisterCollectionMiddleware<TBootstrapper> :
+        IMiddleware<TBootstrapper> 
+        where TBootstrapper : class, IHaveContainerRegistrator, IAssemblySourceProvider
+    {
+        private readonly Type _serviceContractType;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterCollectionMiddleware"/> class.
+        /// </summary>
+        /// <param name="serviceContractType">The type of the module root object.</param>
+        public RegisterCollectionMiddleware(Type serviceContractType)
+        {
+            _serviceContractType = serviceContractType;
+        }
+
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns/>
+        public TBootstrapper
+            Apply(TBootstrapper @object)
+        {
             RegistrationHelper.RegisterCollection(@object.Registrator, _serviceContractType,
-                @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));         
+                @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));
             return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers the ioc container resolver.
+    /// </summary>    
+    public class RegisterResolverMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>
+    {
+        private readonly IIocContainerResolver _resolver;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware"/> class.
+        /// </summary>
+        /// <param name="resolver">The resolver.</param>
+        public RegisterResolverMiddleware(IIocContainerResolver resolver)
+        {
+            _resolver = resolver;
+        }
+
+        /// <summary>Applies the middleware on the specified object.</summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        {
+            var internalMiddleware = new RegisterResolverMiddleware<IBootstrapperWithContainerRegistrator>(_resolver);
+            return internalMiddleware.Apply(@object);
         }
     }
 
