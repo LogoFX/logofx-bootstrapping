@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Linq;
 using Solid.Bootstrapping;
+using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
-{
+{    
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
     /// </summary>
-    public class RegisterCompositionModulesMiddleware :
-        IMiddleware<IBootstrapperWithContainerRegistrator>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
+    public class RegisterCompositionModulesMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
+        where TBootstrapper : class, ICompositionModulesProvider, IHaveContainerRegistrator
     {
-        /// <summary>
-        /// Applies the middleware on the specified object.
-        /// </summary>
+        /// <summary>Applies the middleware on the specified object.</summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerRegistrator Apply(
-            IBootstrapperWithContainerRegistrator @object)
+        public TBootstrapper Apply(TBootstrapper @object)
         {
-            @object.Registrator.RegisterContainerAdapterCompositionModules(@object.Modules);
+            @object.Registrator.RegisterContainerCompositionModules(@object.Modules);
             return @object;
         }
     }
@@ -106,13 +106,15 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Registers the ioc container resolver.
     /// </summary>
-    public class RegisterResolverMiddleware :
-        IMiddleware<IBootstrapperWithContainerRegistrator>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
+    public class RegisterResolverMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
+        where TBootstrapper : class, IHaveContainerRegistrator
     {
         private readonly IIocContainerResolver _resolver;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware"/> class.
+        /// Initializes a new instance of the <see cref="RegisterResolverMiddleware{TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolver">The resolver.</param>
         public RegisterResolverMiddleware(IIocContainerResolver resolver)
@@ -120,13 +122,10 @@ namespace LogoFX.Bootstrapping
             _resolver = resolver;
         }
 
-        /// <summary>
-        /// Applies the middleware on the specified object.
-        /// </summary>
+        /// <summary>Applies the middleware on the specified object.</summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerRegistrator Apply(
-            IBootstrapperWithContainerRegistrator @object)
+        public TBootstrapper Apply(TBootstrapper @object)
         {
             @object.Registrator.RegisterInstance(_resolver);
             return @object;

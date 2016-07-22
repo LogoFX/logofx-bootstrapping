@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
 using Solid.Bootstrapping;
 using Solid.Extensibility;
+using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
-using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
 {
@@ -22,23 +20,8 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Represents the bootstrapper.
     /// </summary>
-    public interface IBootstrapper : IInitializable, IInitializationInfo, IExtensible<IBootstrapper>
-    {
-        /// <summary>
-        /// Gets the composition modules.
-        /// </summary>
-        /// <value>
-        /// The composition modules.
-        /// </value>
-        IEnumerable<ICompositionModule> Modules { get; }
-
-        /// <summary>
-        /// Gets the assemblies which can be inspected for the additional components.
-        /// </summary>
-        /// <value>
-        /// The assemblies.
-        /// </value>
-        Assembly[] Assemblies { get; }                       
+    public interface IBootstrapper : IInitializable, IInitializationInfo, ICompositionModulesProvider, IExtensible<IBootstrapper>, IAssemblySourceProvider
+    {                                    
     }
 
     /// <summary>

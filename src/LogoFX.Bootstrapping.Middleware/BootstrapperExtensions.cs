@@ -69,7 +69,7 @@ namespace LogoFX.Bootstrapping
             this IBootstrapperWithContainerRegistrator bootstrapper,
             IIocContainerResolver resolver)
         {
-            bootstrapper.Use(new RegisterResolverMiddleware(resolver));
+            bootstrapper.Use(new RegisterResolverMiddleware<IBootstrapperWithContainerRegistrator>(resolver));
             return bootstrapper;            
         }
 

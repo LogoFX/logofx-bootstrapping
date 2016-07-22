@@ -24,7 +24,7 @@ namespace LogoFX.Bootstrapping.Tests
                 }
             };
 
-            var middleware = new RegisterCompositionModulesMiddleware();
+            var middleware = new RegisterCompositionModulesMiddleware<FakeBootstrapperWithContainerAdapter>();
             middleware.Apply(bootstrapper);
 
             var registrations = container.Registrations;
