@@ -5,3 +5,4 @@ before_build:
 
 build:
   verbosity: minimal
+  project: src\LogoFX.Bootstrapping.sln
