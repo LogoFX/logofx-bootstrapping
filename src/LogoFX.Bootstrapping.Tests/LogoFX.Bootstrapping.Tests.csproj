@@ -106,11 +106,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.csproj">
+    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\portable\LogoFX.Bootstrapping.Middleware.csproj">
       <Project>{709a3df5-978d-4ca2-a952-d177ec3a902b}</Project>
       <Name>LogoFX.Bootstrapping.Middleware</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj">
+    <ProjectReference Include="..\LogoFX.Bootstrapping\portable\LogoFX.Bootstrapping.csproj">
       <Project>{36864e7e-5bda-4cc8-ad9d-50379aac1c58}</Project>
       <Name>LogoFX.Bootstrapping</Name>
     </ProjectReference>
