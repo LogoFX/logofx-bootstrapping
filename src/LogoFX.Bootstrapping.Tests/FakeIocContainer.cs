@@ -218,7 +218,7 @@ namespace LogoFX.Bootstrapping.Tests
         public IIocContainerRegistrator Registrator { get; internal set; }
         public IIocContainerResolver Resolver { get; internal set; }
         public event EventHandler InitializationCompleted;
-        IBootstrapperWithContainerRegistrator IExtensible<IBootstrapperWithContainerRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithContainerRegistrator> middleware)
+        IBootstrapperWithRegistrator IExtensible<IBootstrapperWithRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithRegistrator> middleware)
         {
             throw new NotImplementedException();
         }        
@@ -248,7 +248,7 @@ namespace LogoFX.Bootstrapping.Tests
             throw new NotImplementedException();
         }
 
-        IBootstrapperWithContainerRegistrator IExtensible<IBootstrapperWithContainerRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithContainerRegistrator> middleware)
+        IBootstrapperWithRegistrator IExtensible<IBootstrapperWithRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithRegistrator> middleware)
         {
             throw new NotImplementedException();
         }

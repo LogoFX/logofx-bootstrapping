@@ -11,14 +11,14 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Registers composition modules into the ioc container adapter.
     /// </summary>    
-    public class RegisterCompositionModulesMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>        
+    public class RegisterCompositionModulesMiddleware : IMiddleware<IBootstrapperWithRegistrator>        
     {
         /// <summary>Applies the middleware on the specified object.</summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        public IBootstrapperWithRegistrator Apply(IBootstrapperWithRegistrator @object)
         {
-            var internalMiddleware = new RegisterCompositionModulesMiddleware<IBootstrapperWithContainerRegistrator>();
+            var internalMiddleware = new RegisterCompositionModulesMiddleware<IBootstrapperWithRegistrator>();
             return internalMiddleware.Apply(@object);
         }
     }
@@ -92,15 +92,15 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Registers the collection of <see cref="IBootstrapperCompositionModule"/> modules.
     /// </summary>
-    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{IBootstrapperWithContainerRegistrator}" />
-    public class RegisterBootstrapperCompositionModulesMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>
+    /// <seealso cref="Solid.Practices.Middleware.IMiddleware{IBootstrapperWithRegistrator}" />
+    public class RegisterBootstrapperCompositionModulesMiddleware : IMiddleware<IBootstrapperWithRegistrator>
     {
         /// <summary>
         /// Applies the middleware on the specified object.
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns/>
-        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        public IBootstrapperWithRegistrator Apply(IBootstrapperWithRegistrator @object)
         {
             foreach (var module in @object.Modules.OfType<IBootstrapperCompositionModule>())
             {
@@ -116,7 +116,7 @@ namespace LogoFX.Bootstrapping
     /// and/or are otherwise private.
     /// </summary>
     public class RegisterCollectionMiddleware :
-        IMiddleware<IBootstrapperWithContainerRegistrator>
+        IMiddleware<IBootstrapperWithRegistrator>
     {
         private readonly Type _serviceContractType;
 
@@ -134,11 +134,11 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns/>
-        public IBootstrapperWithContainerRegistrator
-            Apply(IBootstrapperWithContainerRegistrator @object)
+        public IBootstrapperWithRegistrator
+            Apply(IBootstrapperWithRegistrator @object)
         {
             var internalMiddleware =
-                new RegisterCollectionMiddleware<IBootstrapperWithContainerRegistrator>(_serviceContractType);
+                new RegisterCollectionMiddleware<IBootstrapperWithRegistrator>(_serviceContractType);
             return internalMiddleware.Apply(@object);
         }
     }
@@ -181,7 +181,7 @@ namespace LogoFX.Bootstrapping
     /// <summary>
     /// Registers the ioc container resolver.
     /// </summary>    
-    public class RegisterResolverMiddleware : IMiddleware<IBootstrapperWithContainerRegistrator>
+    public class RegisterResolverMiddleware : IMiddleware<IBootstrapperWithRegistrator>
     {
         private readonly IIocContainerResolver _resolver;
 
@@ -197,9 +197,9 @@ namespace LogoFX.Bootstrapping
         /// <summary>Applies the middleware on the specified object.</summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerRegistrator Apply(IBootstrapperWithContainerRegistrator @object)
+        public IBootstrapperWithRegistrator Apply(IBootstrapperWithRegistrator @object)
         {
-            var internalMiddleware = new RegisterResolverMiddleware<IBootstrapperWithContainerRegistrator>(_resolver);
+            var internalMiddleware = new RegisterResolverMiddleware<IBootstrapperWithRegistrator>(_resolver);
             return internalMiddleware.Apply(@object);
         }
     }

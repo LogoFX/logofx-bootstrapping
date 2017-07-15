@@ -19,9 +19,9 @@ namespace LogoFX.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="serviceContractType">The type of the service contract.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerRegistrator
+        public static IBootstrapperWithRegistrator
             ApplyCollectionRegistration(
-            this IBootstrapperWithContainerRegistrator bootstrapper,
+            this IBootstrapperWithRegistrator bootstrapper,
             Type serviceContractType)
         {
             var middleware = new RegisterCollectionMiddleware(serviceContractType);
@@ -35,9 +35,9 @@ namespace LogoFX.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <typeparam name="TService">The type of the service contract.</typeparam>
         /// <returns></returns>
-        public static IBootstrapperWithContainerRegistrator
+        public static IBootstrapperWithRegistrator
             ApplyCollectionRegistration<TService>(
-            this IBootstrapperWithContainerRegistrator bootstrapper)
+            this IBootstrapperWithRegistrator bootstrapper)
         {
            return ApplyCollectionRegistration(bootstrapper, typeof(TService));
         }
@@ -48,9 +48,9 @@ namespace LogoFX.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="serviceContractType">The type of the service contract.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerRegistrator
+        public static IBootstrapperWithRegistrator
             UseCollectionRegistration(
-            this IBootstrapperWithContainerRegistrator bootstrapper,
+            this IBootstrapperWithRegistrator bootstrapper,
             Type serviceContractType)
         {
             bootstrapper.Use(
@@ -64,12 +64,12 @@ namespace LogoFX.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="resolver">The resolver.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerRegistrator
+        public static IBootstrapperWithRegistrator
             UseResolver(
-            this IBootstrapperWithContainerRegistrator bootstrapper,
+            this IBootstrapperWithRegistrator bootstrapper,
             IIocContainerResolver resolver)
         {
-            bootstrapper.Use(new RegisterResolverMiddleware<IBootstrapperWithContainerRegistrator>(resolver));
+            bootstrapper.Use(new RegisterResolverMiddleware<IBootstrapperWithRegistrator>(resolver));
             return bootstrapper;            
         }
 
@@ -78,8 +78,8 @@ namespace LogoFX.Bootstrapping
         /// </summary>
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <returns></returns>
-        public static IBootstrapperWithContainerRegistrator UseBootstrapperComposition(
-           this IBootstrapperWithContainerRegistrator bootstrapper)
+        public static IBootstrapperWithRegistrator UseBootstrapperComposition(
+           this IBootstrapperWithRegistrator bootstrapper)
         {
             bootstrapper.Use(new RegisterBootstrapperCompositionModulesMiddleware());
             return bootstrapper;
