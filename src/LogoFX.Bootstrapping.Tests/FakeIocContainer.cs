@@ -58,9 +58,19 @@ namespace LogoFX.Bootstrapping.Tests
             _registrations.Add(new ContainerEntry(typeof (TService), typeof (TImplementation), false));
         }
 
+        public void RegisterTransient<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
+        {
+            _registrations.Add(new ContainerEntry(typeof(TService), typeof(TImplementation), false));
+        }
+
         public void RegisterTransient<TService>() where TService : class
         {
             _registrations.Add(new ContainerEntry(typeof(TService), typeof(TService), false));
+        }
+
+        public void RegisterTransient<TService>(Func<TService> dependencyCreator) where TService : class
+        {
+            throw new NotImplementedException();
         }
 
         public void RegisterTransient(Type serviceType, Type implementationType)
@@ -68,14 +78,39 @@ namespace LogoFX.Bootstrapping.Tests
             _registrations.Add(new ContainerEntry(serviceType, implementationType, false));
         }
 
+        public void RegisterTransient(Type serviceType, Type implementationType, Func<object> dependencyCreator)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterSingleton<TService>() where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RegisterSingleton<TService>(Func<TService> dependencyCreator) where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
         public void RegisterSingleton<TService, TImplementation>() where TImplementation : class, TService
         {
             _registrations.Add(new ContainerEntry(typeof(TService), typeof(TImplementation), true));
         }
 
+        public void RegisterSingleton<TService, TImplementation>(Func<TImplementation> dependencyCreator) where TImplementation : class, TService
+        {
+            throw new NotImplementedException();
+        }
+
         public void RegisterSingleton(Type serviceType, Type implementationType)
         {
             _registrations.Add(new ContainerEntry(serviceType, implementationType, true));
+        }
+
+        public void RegisterSingleton(Type serviceType, Type implementationType, Func<object> dependencyCreator)
+        {
+            throw new NotImplementedException();
         }
 
         public void RegisterInstance<TService>(TService instance) where TService : class

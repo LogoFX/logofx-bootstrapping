@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Shouldly;
+using FluentAssertions;
 using Solid.Practices.Modularity;
 using Xunit;
 
@@ -29,9 +29,9 @@ namespace LogoFX.Bootstrapping.Tests
 
             var registrations = container.Registrations;
             var dependencyRegistration = registrations.First();
-            dependencyRegistration.ImplementationType.ShouldBe(typeof(TransientDependency));
-            dependencyRegistration.InterfaceType.ShouldBe(typeof(IDependency));
-            dependencyRegistration.IsSingleton.ShouldBe(false);
+            dependencyRegistration.ImplementationType.Should().Be(typeof(TransientDependency));
+            dependencyRegistration.InterfaceType.Should().Be(typeof(IDependency));
+            dependencyRegistration.IsSingleton.Should().Be(false);
         }
 
         [Fact]
@@ -56,9 +56,9 @@ namespace LogoFX.Bootstrapping.Tests
 
             var registrations = container.Registrations;
             var dependencyRegistration = registrations.First();
-            dependencyRegistration.ImplementationType.ShouldBe(typeof(TransientDependency));
-            dependencyRegistration.InterfaceType.ShouldBe(typeof(IDependency));
-            dependencyRegistration.IsSingleton.ShouldBe(false);
+            dependencyRegistration.ImplementationType.Should().Be(typeof(TransientDependency));
+            dependencyRegistration.InterfaceType.Should().Be(typeof(IDependency));
+            dependencyRegistration.IsSingleton.Should().Be(false);
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace LogoFX.Bootstrapping.Tests
 
             var registrations = containerAdapter.Registrations;
             var dependencyRegistration = registrations.First();
-            (dependencyRegistration.InterfaceType == typeof(IEnumerable<IServiceContract>)).ShouldBeTrue();
+            (dependencyRegistration.InterfaceType == typeof(IEnumerable<IServiceContract>)).Should().BeTrue();
         }
     }
 }

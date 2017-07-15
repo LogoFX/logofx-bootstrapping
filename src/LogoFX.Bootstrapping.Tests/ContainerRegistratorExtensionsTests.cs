@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Shouldly;
+using FluentAssertions;
 using Solid.Practices.Modularity;
 using Xunit;
 
@@ -20,9 +20,9 @@ namespace LogoFX.Bootstrapping.Tests
 
             var registrations = container.Registrations;
             var dependencyRegistration = registrations.First();
-            dependencyRegistration.ImplementationType.ShouldBe(typeof(TransientDependency));
-            dependencyRegistration.InterfaceType.ShouldBe(typeof(IDependency));
-            dependencyRegistration.IsSingleton.ShouldBe(false);
+            dependencyRegistration.ImplementationType.Should().Be(typeof(TransientDependency));
+            dependencyRegistration.InterfaceType.Should().Be(typeof(IDependency));
+            dependencyRegistration.IsSingleton.Should().Be(false);
         }
     }
 }
