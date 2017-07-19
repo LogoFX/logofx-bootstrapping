@@ -96,7 +96,7 @@ namespace LogoFX.Bootstrapping
         public static TBootstrapper UseMany<TBootstrapper>(
             this TBootstrapper bootstrapper,
             IEnumerable<IMiddleware<IIocContainerRegistrator>> middlewares) 
-            where TBootstrapper : class, IHaveContainerRegistrator, IExtensible<TBootstrapper>
+            where TBootstrapper : class, IHaveRegistrator, IExtensible<TBootstrapper>
         {
             var bootstrapperMiddlewares =
                 middlewares.Select(

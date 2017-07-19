@@ -29,7 +29,7 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
     public class RegisterCompositionModulesMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
-        where TBootstrapper : class, ICompositionModulesProvider, IHaveContainerRegistrator
+        where TBootstrapper : class, ICompositionModulesProvider, IHaveRegistrator
     {
         /// <summary>Applies the middleware on the specified object.</summary>
         /// <param name="object">The object.</param>
@@ -151,7 +151,7 @@ namespace LogoFX.Bootstrapping
     /// </summary>
     public class RegisterCollectionMiddleware<TBootstrapper> :
         IMiddleware<TBootstrapper> 
-        where TBootstrapper : class, IHaveContainerRegistrator, IAssemblySourceProvider
+        where TBootstrapper : class, IHaveRegistrator, IAssemblySourceProvider
     {
         private readonly Type _serviceContractType;
 
@@ -210,7 +210,7 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
     public class RegisterResolverMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
-        where TBootstrapper : class, IHaveContainerRegistrator
+        where TBootstrapper : class, IHaveRegistrator
     {
         private readonly IIocContainerResolver _resolver;
 
@@ -240,7 +240,7 @@ namespace LogoFX.Bootstrapping
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
     public class UseContainerRegistratorMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
-        where TBootstrapper : class, IHaveContainerRegistrator
+        where TBootstrapper : class, IHaveRegistrator
     {
         private readonly IMiddleware<IIocContainerRegistrator> _middleware;
 
