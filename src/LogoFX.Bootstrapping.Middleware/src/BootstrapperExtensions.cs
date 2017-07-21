@@ -67,7 +67,7 @@ namespace LogoFX.Bootstrapping
         public static IBootstrapperWithRegistrator
             UseResolver(
             this IBootstrapperWithRegistrator bootstrapper,
-            IIocContainerResolver resolver)
+            IDependencyResolver resolver)
         {
             bootstrapper.Use(new RegisterResolverMiddleware<IBootstrapperWithRegistrator>(resolver));
             return bootstrapper;            
@@ -87,7 +87,7 @@ namespace LogoFX.Bootstrapping
 
         /// <summary>
         /// Extends the bootstrapper's functionality by using the specified collection
-        /// of ioc container registrator middlewares.
+        /// of dependency registrator middlewares.
         /// </summary>
         /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
         /// <param name="bootstrapper">The bootstrapper.</param>
@@ -95,7 +95,7 @@ namespace LogoFX.Bootstrapping
         /// <returns></returns>
         public static TBootstrapper UseMany<TBootstrapper>(
             this TBootstrapper bootstrapper,
-            IEnumerable<IMiddleware<IIocContainerRegistrator>> middlewares) 
+            IEnumerable<IMiddleware<IDependencyRegistrator>> middlewares) 
             where TBootstrapper : class, IHaveRegistrator, IExtensible<TBootstrapper>
         {
             var bootstrapperMiddlewares =

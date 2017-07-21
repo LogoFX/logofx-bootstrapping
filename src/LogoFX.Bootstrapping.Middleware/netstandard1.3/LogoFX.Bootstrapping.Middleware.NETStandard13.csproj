@@ -20,9 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc3" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc4" />
     <PackageReference Include="Solid.Extensibility" Version="1.2.0-rc2" />
     <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.0-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0-rc3" />
   </ItemGroup>
 
   <ItemGroup>

@@ -179,17 +179,17 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers the ioc container resolver.
+    /// Registers the dependency resolver.
     /// </summary>    
     public class RegisterResolverMiddleware : IMiddleware<IBootstrapperWithRegistrator>
     {
-        private readonly IIocContainerResolver _resolver;
+        private readonly IDependencyResolver _resolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterResolverMiddleware"/> class.
         /// </summary>
         /// <param name="resolver">The resolver.</param>
-        public RegisterResolverMiddleware(IIocContainerResolver resolver)
+        public RegisterResolverMiddleware(IDependencyResolver resolver)
         {
             _resolver = resolver;
         }
@@ -205,20 +205,20 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers the ioc container resolver.
+    /// Registers the dependency resolver.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
     public class RegisterResolverMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
         where TBootstrapper : class, IHaveRegistrator
     {
-        private readonly IIocContainerResolver _resolver;
+        private readonly IDependencyResolver _resolver;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RegisterResolverMiddleware{TBootstrapper}"/> class.
         /// </summary>
         /// <param name="resolver">The resolver.</param>
-        public RegisterResolverMiddleware(IIocContainerResolver resolver)
+        public RegisterResolverMiddleware(IDependencyResolver resolver)
         {
             _resolver = resolver;
         }
@@ -235,20 +235,20 @@ namespace LogoFX.Bootstrapping
 
     /// <summary>
     /// Extends the bootstrapper's functionality by using the 
-    /// specified ioc container registrator middleware.
+    /// specified dependency registrator middleware.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
     public class UseContainerRegistratorMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
         where TBootstrapper : class, IHaveRegistrator
     {
-        private readonly IMiddleware<IIocContainerRegistrator> _middleware;
+        private readonly IMiddleware<IDependencyRegistrator> _middleware;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="UseContainerRegistratorMiddleware{TBootstrapper}"/> class.
         /// </summary>
-        /// <param name="middleware">The ioc container registrator middleware.</param>
-        public UseContainerRegistratorMiddleware(IMiddleware<IIocContainerRegistrator> middleware)
+        /// <param name="middleware">The dependency registrator middleware.</param>
+        public UseContainerRegistratorMiddleware(IMiddleware<IDependencyRegistrator> middleware)
         {
             _middleware = middleware;
         }
