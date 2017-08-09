@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>LogoFX.Bootstrapping</AssemblyName>
+    <RootNamespace>LogoFX.Bootstrapping</RootNamespace>
+    <ApplicationIcon />
+    <OutputTypeEx>library</OutputTypeEx>
+    <StartupObject />
+    <Version>1.7.0</Version>
+    <AssemblyVersion>1.7.0</AssemblyVersion>
+    <FileVersion>1.7.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\LogoFX.Bootstrapping.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\ContainerExtensions.cs" Link="ContainerExtensions.cs" />
+    <Compile Include="..\src\ContainerRegistratorExtensions.cs" Link="ContainerRegistratorExtensions.cs" />
+    <Compile Include="..\src\IBootstrapper.cs" Link="IBootstrapper.cs" />
+    <Compile Include="..\src\IBootstrapperCompositionModule.cs" Link="IBootstrapperCompositionModule.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0-rc4" />
+    <PackageReference Include="Solid.Extensibility" Version="1.2.0-rc2" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.0-rc2" />
+  </ItemGroup>
+
+</Project>

@@ -12,6 +12,6 @@ namespace LogoFX.Bootstrapping
         /// Registers dependencies using the bootstrapper.
         /// </summary>
         /// <param name="bootstrapper">The bootstrapper.</param>
-        void RegisterModule(IBootstrapperWithContainerRegistrator bootstrapper);
+        void RegisterModule(IBootstrapperWithRegistrator bootstrapper);
     }
 }
