@@ -31,8 +31,8 @@
     <DocumentationFile>..\..\Bin\net45\Release\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0\lib\net45\Solid.Bootstrapping.dll</HintPath>
+    <Reference Include="Solid.Bootstrapping, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.1-rc1\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Solid.Extensibility.1.2.0\lib\net45\Solid.Extensibility.dll</HintPath>

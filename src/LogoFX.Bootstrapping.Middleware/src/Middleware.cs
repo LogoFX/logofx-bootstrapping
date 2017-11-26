@@ -9,7 +9,7 @@ using Solid.Practices.Modularity;
 namespace LogoFX.Bootstrapping
 {
     /// <summary>
-    /// Registers composition modules into the ioc container adapter.
+    /// Registers composition modules into the bootstrapper's registrator.
     /// </summary>    
     public class RegisterCompositionModulesMiddleware : IMiddleware<IBootstrapperWithRegistrator>        
     {
@@ -24,7 +24,7 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers composition modules into the ioc container adapter.
+    /// Registers composition modules into the bootstrapper's registrator.
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
@@ -42,7 +42,28 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers composition modules into the ioc container.
+    /// Registers composition modules into the bootstrapper's registrator.
+    /// </summary>
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+    /// <typeparam name="TDependencyRegistrator">The type of the dependency registrator.</typeparam>
+    public class RegisterCustomCompositionModulesMiddleware<TBootstrapper, TDependencyRegistrator> : IMiddleware<TBootstrapper>
+        where TBootstrapper : class, ICompositionModulesProvider, IHaveRegistrator<TDependencyRegistrator>
+        where TDependencyRegistrator : class
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public TBootstrapper Apply(TBootstrapper @object)
+        {
+            @object.Registrator.RegisterContainerCompositionModules(@object.Modules);
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers composition modules into the bootstrapper's ioc container.
     /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
@@ -67,7 +88,7 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Registers composition modules into the ioc container.
+    /// Registers composition modules into the boostrapper's ioc container.
     /// </summary>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>    
@@ -239,16 +260,16 @@ namespace LogoFX.Bootstrapping
     /// </summary>
     /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
     /// <seealso cref="Solid.Practices.Middleware.IMiddleware{TBootstrapper}" />
-    public class UseContainerRegistratorMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
+    public class UseDependencyRegistratorMiddleware<TBootstrapper> : IMiddleware<TBootstrapper>
         where TBootstrapper : class, IHaveRegistrator
     {
         private readonly IMiddleware<IDependencyRegistrator> _middleware;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="UseContainerRegistratorMiddleware{TBootstrapper}"/> class.
+        /// Initializes a new instance of the <see cref="UseDependencyRegistratorMiddleware{TBootstrapper}"/> class.
         /// </summary>
         /// <param name="middleware">The dependency registrator middleware.</param>
-        public UseContainerRegistratorMiddleware(IMiddleware<IDependencyRegistrator> middleware)
+        public UseDependencyRegistratorMiddleware(IMiddleware<IDependencyRegistrator> middleware)
         {
             _middleware = middleware;
         }

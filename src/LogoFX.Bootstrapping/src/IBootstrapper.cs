@@ -25,7 +25,7 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
-    /// Represents bootstrapper with ioc container registrator.
+    /// Represents bootstrapper with dependency registrator.
     /// </summary>
     public interface IBootstrapperWithRegistrator : IBootstrapper, IHaveRegistrator, IExtensible<IBootstrapperWithRegistrator>
     {

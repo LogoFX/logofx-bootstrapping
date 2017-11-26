@@ -4,9 +4,9 @@
     <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>LogoFX.Bootstrapping.Middleware</AssemblyName>
     <RootNamespace>LogoFX.Bootstrapping.Middleware</RootNamespace>
-    <Version>1.7.0</Version>
-    <AssemblyVersion>1.7.0</AssemblyVersion>
-    <FileVersion>1.7.0</FileVersion>
+    <Version>1.7.1</Version>
+    <AssemblyVersion>1.7.1</AssemblyVersion>
+    <FileVersion>1.7.1</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.0" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc1" />
     <PackageReference Include="Solid.Extensibility" Version="1.2.0" />
     <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.0" />
     <PackageReference Include="Solid.Practices.Modularity" Version="1.2.0" />

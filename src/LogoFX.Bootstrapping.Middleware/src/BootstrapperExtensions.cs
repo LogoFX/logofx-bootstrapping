@@ -101,7 +101,7 @@ namespace LogoFX.Bootstrapping
             var bootstrapperMiddlewares =
                 middlewares.Select(
                     t =>
-                        new UseContainerRegistratorMiddleware<TBootstrapper>(t));
+                        new UseDependencyRegistratorMiddleware<TBootstrapper>(t));
             foreach (var bootstrapperMiddleware in bootstrapperMiddlewares)
             {
                 bootstrapper.Use(bootstrapperMiddleware);
