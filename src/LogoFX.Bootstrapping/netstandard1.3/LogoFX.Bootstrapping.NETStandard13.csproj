@@ -22,6 +22,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="..\src\CompositionHelper.cs" Link="CompositionHelper.cs" />
+    <Compile Include="..\src\CompositionStorage.cs" Link="CompositionStorage.cs" />
     <Compile Include="..\src\ContainerExtensions.cs" Link="ContainerExtensions.cs" />
     <Compile Include="..\src\ContainerRegistratorExtensions.cs" Link="ContainerRegistratorExtensions.cs" />
     <Compile Include="..\src\IBootstrapper.cs" Link="IBootstrapper.cs" />
@@ -29,9 +31,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc1" />
-    <PackageReference Include="Solid.Extensibility" Version="1.2.0" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.0" />
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc2" />
+    <PackageReference Include="Solid.Extensibility" Version="1.2.1-rc1" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc2" />
   </ItemGroup>
 
 </Project>
