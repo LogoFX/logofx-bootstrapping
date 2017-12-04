@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>LogoFX.Bootstrapping.Middleware</AssemblyName>
+    <RootNamespace>LogoFX.Bootstrapping.Middleware</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
+    <Compile Include="..\src\Middleware.cs" Link="Middleware.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc2" />
+    <PackageReference Include="Solid.Extensibility" Version="1.2.1-rc1" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj" />
+  </ItemGroup>
+
+</Project>
