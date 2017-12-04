@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>LogoFX.Bootstrapping</AssemblyName>
+    <RootNamespace>LogoFX.Bootstrapping</RootNamespace>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\LogoFX.Bootstrapping.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc2" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc1" />
+  </ItemGroup>
+
+</Project>

@@ -112,7 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\netstandard1.3\LogoFX.Bootstrapping.Middleware.NETStandard13.csproj">
-      <Project>{d91d0e70-fb32-44cd-a47c-47ca98456592}</Project>
+      <Project>{664ff537-0a9b-4d06-9920-5f517f35d8a2}</Project>
       <Name>LogoFX.Bootstrapping.Middleware.NETStandard13</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard1.3\LogoFX.Bootstrapping.NETStandard13.csproj">
