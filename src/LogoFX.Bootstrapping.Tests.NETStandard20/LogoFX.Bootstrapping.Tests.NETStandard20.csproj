@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}</ProjectGuid>
+    <ProjectGuid>{99BA7607-2585-41DB-95BC-5E398CEB0DDF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LogoFX.Bootstrapping.Tests.NETStandard13</RootNamespace>
-    <AssemblyName>LogoFX.Bootstrapping.Tests.NETStandard13</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <RootNamespace>LogoFX.Bootstrapping.Tests.NETStandard20</RootNamespace>
+    <AssemblyName>LogoFX.Bootstrapping.Tests.NETStandard20</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -37,28 +37,28 @@
       <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Bootstrapping, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Bootstrapping.1.2.1-rc3\lib\netstandard1.3\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\packages\Solid.Bootstrapping.1.2.1-rc3\lib\netstandard2.0\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Extensibility.1.2.1-rc2\lib\netstandard1.3\Solid.Extensibility.dll</HintPath>
+      <HintPath>..\packages\Solid.Extensibility.1.2.1-rc2\lib\netstandard2.0\Solid.Extensibility.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard1.3\Solid.Practices.Composition.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard2.0\Solid.Practices.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Container, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard1.3\Solid.Practices.Composition.Container.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard2.0\Solid.Practices.Composition.Container.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Contracts, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard1.3\Solid.Practices.Composition.Contracts.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc3\lib\netstandard2.0\Solid.Practices.Composition.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.IoC, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.IoC.1.2.1-rc2\lib\netstandard1.3\Solid.Practices.IoC.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.IoC.1.2.1-rc2\lib\netstandard2.0\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Middleware, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Middleware.1.2.1-rc2\lib\netstandard1.3\Solid.Practices.Middleware.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.Middleware.1.2.1-rc2\lib\netstandard2.0\Solid.Practices.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Modularity, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Modularity.1.2.1-rc2\lib\netstandard1.3\Solid.Practices.Modularity.dll</HintPath>
+      <HintPath>..\packages\Solid.Practices.Modularity.1.2.1-rc2\lib\netstandard2.0\Solid.Practices.Modularity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -69,9 +69,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
-      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
     </Reference>
     <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
       <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
@@ -108,20 +105,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.NETStandard20\LogoFX.Bootstrapping.Middleware.NETStandard20.csproj">
+      <Project>{1cbc225b-78df-45f6-9d43-1363621d0d79}</Project>
+      <Name>LogoFX.Bootstrapping.Middleware.NETStandard20</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj">
+      <Project>{e1287ceb-a187-474b-9db6-e9de154b7eef}</Project>
+      <Name>LogoFX.Bootstrapping.NETStandard20</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\netstandard1.3\LogoFX.Bootstrapping.Middleware.NETStandard13.csproj">
-      <Project>{664ff537-0a9b-4d06-9920-5f517f35d8a2}</Project>
-      <Name>LogoFX.Bootstrapping.Middleware.NETStandard13</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard1.3\LogoFX.Bootstrapping.NETStandard13.csproj">
-      <Project>{445a3cfb-6dd2-493a-a45f-24b9d553ad8b}</Project>
-      <Name>LogoFX.Bootstrapping.NETStandard13</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
