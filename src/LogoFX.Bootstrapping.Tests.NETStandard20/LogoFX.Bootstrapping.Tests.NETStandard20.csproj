@@ -37,28 +37,36 @@
       <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Bootstrapping, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Bootstrapping.1.2.1-rc3\lib\netstandard2.0\Solid.Bootstrapping.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Extensibility.1.2.1-rc2\lib\netstandard2.0\Solid.Extensibility.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Extensibility.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc4\lib\netstandard2.0\Solid.Practices.Composition.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Container, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc4\lib\netstandard2.0\Solid.Practices.Composition.Container.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Container.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Contracts, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Composition.Core.1.2.1-rc4\lib\netstandard2.0\Solid.Practices.Composition.Contracts.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.IoC, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.IoC.1.2.1-rc4\lib\netstandard2.0\Solid.Practices.IoC.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Middleware, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Middleware.1.2.1-rc2\lib\netstandard2.0\Solid.Practices.Middleware.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Modularity, Version=1.2.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Practices.Modularity.1.2.1-rc2\lib\netstandard2.0\Solid.Practices.Modularity.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Modularity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -116,6 +124,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

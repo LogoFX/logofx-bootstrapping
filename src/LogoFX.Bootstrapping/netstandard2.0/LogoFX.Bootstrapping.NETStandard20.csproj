@@ -5,6 +5,8 @@
     <AssemblyName>LogoFX.Bootstrapping</AssemblyName>
     <RootNamespace>LogoFX.Bootstrapping</RootNamespace>
     <Version>1.7.1</Version>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>LogoFX.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -22,10 +24,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc3" />
-    <PackageReference Include="Solid.Extensibility" Version="1.2.1-rc2" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc4" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc2" />
+    <Reference Include="Solid.Bootstrapping">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Bootstrapping.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Extensibility">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Extensibility.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Composition">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Composition.Container">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Composition.Contracts">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Contracts.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.IoC">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.IoC.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Middleware">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Middleware.dll</HintPath>
+    </Reference>
+    <Reference Include="Solid.Practices.Modularity">
+      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Modularity.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
