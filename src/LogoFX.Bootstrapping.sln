@@ -3,15 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.NETStandard13", "LogoFX.Bootstrapping\netstandard1.3\LogoFX.Bootstrapping.NETStandard13.csproj", "{445A3CFB-6DD2-493A-A45F-24B9D553AD8B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Bootstrapping.Tests.NETStandard13", "LogoFX.Bootstrapping.Tests.NETStandard13\LogoFX.Bootstrapping.Tests.NETStandard13.csproj", "{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.Middleware.NETStandard20", "LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.NETStandard20\LogoFX.Bootstrapping.Middleware.NETStandard20.csproj", "{1CBC225B-78DF-45F6-9D43-1363621D0D79}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.NETStandard20", "LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj", "{E1287CEB-A187-474B-9DB6-E9DE154B7EEF}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.Middleware.NETStandard13", "LogoFX.Bootstrapping.Middleware\netstandard1.3\LogoFX.Bootstrapping.Middleware.NETStandard13.csproj", "{664FF537-0A9B-4D06-9920-5F517F35D8A2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Bootstrapping.Tests.NETStandard20", "LogoFX.Bootstrapping.Tests.NETStandard20\LogoFX.Bootstrapping.Tests.NETStandard20.csproj", "{99BA7607-2585-41DB-95BC-5E398CEB0DDF}"
 EndProject
@@ -21,14 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{445A3CFB-6DD2-493A-A45F-24B9D553AD8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{445A3CFB-6DD2-493A-A45F-24B9D553AD8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{445A3CFB-6DD2-493A-A45F-24B9D553AD8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{445A3CFB-6DD2-493A-A45F-24B9D553AD8B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7CC6A05F-09BD-4B3F-801A-E35C61DA8595}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1CBC225B-78DF-45F6-9D43-1363621D0D79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1CBC225B-78DF-45F6-9D43-1363621D0D79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CBC225B-78DF-45F6-9D43-1363621D0D79}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -37,10 +23,6 @@ Global
 		{E1287CEB-A187-474B-9DB6-E9DE154B7EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1287CEB-A187-474B-9DB6-E9DE154B7EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1287CEB-A187-474B-9DB6-E9DE154B7EEF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{664FF537-0A9B-4D06-9920-5F517F35D8A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{664FF537-0A9B-4D06-9920-5F517F35D8A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{664FF537-0A9B-4D06-9920-5F517F35D8A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{664FF537-0A9B-4D06-9920-5F517F35D8A2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{99BA7607-2585-41DB-95BC-5E398CEB0DDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{99BA7607-2585-41DB-95BC-5E398CEB0DDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99BA7607-2585-41DB-95BC-5E398CEB0DDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
