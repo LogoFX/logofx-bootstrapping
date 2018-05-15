@@ -78,7 +78,9 @@ namespace LogoFX.Bootstrapping
             }
             finally
             {
-                compositionInfo.Modules = compositionManager.Modules.ToArray();
+                compositionInfo.Modules = compositionManager.Modules == null
+                    ? new ICompositionModule[] { }
+                    : compositionManager.Modules.ToArray();
             }
 
             return compositionInfo;
