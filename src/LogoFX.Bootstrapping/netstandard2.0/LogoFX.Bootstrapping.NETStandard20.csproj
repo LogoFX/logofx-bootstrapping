@@ -16,6 +16,12 @@
     <DocumentationFile>..\..\Bin\netstandard2.0\Release\netstandard2.0\LogoFX.Bootstrapping.xml</DocumentationFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>Y:\Workspace\Samples.Specifications\Bin\DebugWithFake\</OutputPath>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\src\CompositionHelper.cs" Link="CompositionHelper.cs" />
     <Compile Include="..\src\CompositionStorage.cs" Link="CompositionStorage.cs" />
@@ -28,7 +34,7 @@
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc3" />
     <PackageReference Include="Solid.Extensibility" Version="1.2.1-rc2" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc5" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc6" />
     <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc2" />
   </ItemGroup>
 
