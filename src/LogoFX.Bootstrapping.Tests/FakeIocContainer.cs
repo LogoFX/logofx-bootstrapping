@@ -210,6 +210,8 @@ namespace LogoFX.Bootstrapping.Tests
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
         public IEnumerable<Assembly> Assemblies { get; internal set; }
+        public IEnumerable<Exception> Errors { get; internal set; }
+
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
@@ -243,6 +245,8 @@ namespace LogoFX.Bootstrapping.Tests
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
         public IEnumerable<Assembly> Assemblies { get; internal set; }
+        public IEnumerable<Exception> Errors { get; internal set; }
+
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
