@@ -30,9 +30,20 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
+    /// Exposes additional shutdown information.
+    /// </summary>
+    public interface IExitInfo
+    {
+        /// <summary>
+        /// Occurs when the application shuts down.
+        /// </summary>
+        event EventHandler Exited;
+    }
+
+    /// <summary>
     /// Represents the bootstrapper.
     /// </summary>
-    public interface IBootstrapper : IInitializable, IInitializationInfo, ICompositionModulesProvider,
+    public interface IBootstrapper : IInitializable, IInitializationInfo, IExitInfo, ICompositionModulesProvider,
         IExtensible<IBootstrapper>, IAssemblySourceProvider, IHaveErrors
     {
     }
