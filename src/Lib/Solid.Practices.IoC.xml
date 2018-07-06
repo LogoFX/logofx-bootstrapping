@@ -1,0 +1,359 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.IoC</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.IoC.DependencyRegistratorExtensions">
+            <summary>
+            The dependency registration methods using fluent API.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient``2(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient``2(Solid.Practices.IoC.IDependencyRegistrator,System.Func{``1})">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient``1(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient``1(Solid.Practices.IoC.IDependencyRegistrator,System.Func{``0})">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Type)">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddTransient(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Type,System.Func{System.Object})">
+            <summary>
+            Registers dependency in a transient lifetime style using fluent API.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton``1(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers dependency as a singleton using fluent API.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton``1(Solid.Practices.IoC.IDependencyRegistrator,System.Func{``0})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton``2(Solid.Practices.IoC.IDependencyRegistrator)">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton``2(Solid.Practices.IoC.IDependencyRegistrator,System.Func{``1})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Type)">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>   
+            <param name="dependencyRegistrator">The dependency registrator.</param>     
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddSingleton(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Type,System.Func{System.Object})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>      
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddInstance``1(Solid.Practices.IoC.IDependencyRegistrator,``0)">
+            <summary>
+            Registers the instance of the dependency.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="instance">The instance of the dependency.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddInstance(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Object)">
+            <summary>
+            Registers the instance of the dependency.v
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyType">The type of dependency.</param>
+            <param name="instance">The instance of dependency.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddCollection``1(Solid.Practices.IoC.IDependencyRegistrator,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyTypes">The dependency types.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddCollection``1(Solid.Practices.IoC.IDependencyRegistrator,System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencies">The dependencies.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddCollection(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>        
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyType">The type of the dependency.</param>
+            <param name="dependencyTypes">The dependency types.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.DependencyRegistratorExtensions.AddCollection(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>        
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="dependencyType">The type of the dependency.</param>
+            <param name="dependencies">The dependencies.</param>
+        </member>
+        <member name="T:Solid.Practices.IoC.IIocContainer">
+            <summary>
+            Represents an IoC (Inversion-Of-Control) container.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.IoC.IDependencyRegistrator">
+            <summary>
+            Represents an object that is capable of registering dependencies into an IoC container.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient``2">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient``2(System.Func{``1})">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient``1">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient``1(System.Func{``0})">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient(System.Type,System.Type)">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterTransient(System.Type,System.Type,System.Func{System.Object})">
+            <summary>
+            Registers dependency in a transient lifetime style.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton``1">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton``1(System.Func{``0})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton``2">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton``2(System.Func{``1})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="dependencyCreator">Dependency creator delegate.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton(System.Type,System.Type)">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>        
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterSingleton(System.Type,System.Type,System.Func{System.Object})">
+            <summary>
+            Registers dependency as a singleton.
+            </summary>
+            <param name="serviceType">The type of the dependency declaration.</param>
+            <param name="implementationType">The type of the dependency implementation.</param>
+            <param name="dependencyCreator">Dependency creator delegate.</param>      
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterInstance``1(``0)">
+            <summary>
+            Registers the instance of the dependency.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="instance">The instance of the dependency.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterInstance(System.Type,System.Object)">
+            <summary>
+            Registers the instance of the dependency.
+            </summary>
+            <param name="dependencyType">The type of dependency.</param>
+            <param name="instance">The instance of dependency.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterCollection``1(System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencyTypes">The dependency types.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterCollection``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="dependencies">The dependencies.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterCollection(System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>        
+            <param name="dependencyType">The type of the dependency.</param>
+            <param name="dependencyTypes">The dependency types.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistrator.RegisterCollection(System.Type,System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            Registers the collection of the dependencies.
+            </summary>        
+            <param name="dependencyType">The type of the dependency.</param>
+            <param name="dependencies">The dependencies.</param>
+        </member>
+        <member name="T:Solid.Practices.IoC.IDependencyResolver">
+            <summary>
+            Represents object that is capable of resolving dependencies from an IoC container.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyResolver.Resolve``1">
+            <summary>
+            Resolves an instance of dependency.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyResolver.Resolve(System.Type)">
+            <summary>
+            Resolves an instance of dependency according to the dependency type.
+            </summary>
+            <param name="dependencyType">The type of the dependency.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.IoC.IDependencyRegistratorScoped">
+            <summary>
+            Represents means of registering a dependency whose lifetime is bound
+            to the lifetime of another object.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistratorScoped.RegisterScoped(System.Func{System.Object},System.Type,System.Type)">
+            <summary>
+            Registers the dependency per lifetime of another object.
+            </summary>
+            <param name="lifetimeProvider">The lifetime scope.</param>
+            <param name="dependencyContract">The type of the dependency declaration.</param>
+            <param name="dependencyImplementation">The type of the dependency implementation.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistratorScoped.RegisterScoped``2(System.Func{System.Object})">
+            <summary>
+            Registers the dependency per lifetime of another object.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency declaration.</typeparam>
+            <typeparam name="TImplementation">The type of the dependency implementation.</typeparam>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+        </member>
+        <member name="M:Solid.Practices.IoC.IDependencyRegistratorScoped.RegisterScoped``1(System.Func{System.Object})">
+            <summary>
+            Registers the dependency per lifetime of another object.
+            </summary>
+            <typeparam name="TDependency">The type of the dependency.</typeparam>
+            <param name="lifetimeProvider">The lifetime provider.</param>
+        </member>
+        <member name="T:Solid.Practices.IoC.IIocContainerAdapter">
+            <summary>
+            Represents an adapter to an Inversion-Of-Control container.
+            This is a marker interface.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.IoC.IIocContainerAdapter`1">
+            <summary>
+            Represents an adapter to the concrete IoC container.
+            This is a marker interface.
+            </summary>
+            <typeparam name="TContainer">The type of the concrete IoC container.</typeparam>
+        </member>
+    </members>
+</doc>

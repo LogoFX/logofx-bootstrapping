@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition.Container</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.Container.ITypeInfoExtractionService">
+            <summary>
+            Represents means of extracting type info.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.ITypeInfoExtractionService.GetTypes(System.Reflection.Assembly)">
+            <summary>
+            Gets the types that are defined in the assembly.
+            </summary>
+            <param name="assembly">The assembly to be queried for types.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.ITypeInfoExtractionService.IsCompositionModule(System.Reflection.TypeInfo,System.Type)">
+            <summary>
+            Tests whethere the provided type qualifies as a composition module.
+            </summary>
+            <param name="type">The type to be tested.</param>
+            <param name="moduleType">The composition module type.</param>
+            <returns>True, if the type qualifies as a composition module; false otherwise.</returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.TypeInfoExtractionService">
+            <inheritdoc />    
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.TypeInfoExtractionService.GetTypes(System.Reflection.Assembly)">
+            <inheritdoc />  
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.TypeInfoExtractionService.IsCompositionModule(System.Reflection.TypeInfo,System.Type)">
+            <inheritdoc />  
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.CompositionException">
+            <summary>
+            Represents an exception that is thrown during modules composition.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.CompositionException.#ctor(System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Solid.Practices.Composition.Container.CompositionException"/>
+            </summary>
+            <param name="message">The message.</param>
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.AggregateAssemblyInspectionException">
+            <summary>
+            Represents an exception that is thrown during assemblies' inspection.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.AggregateAssemblyInspectionException.InnerExceptions">
+            <summary>
+            The collection modules' inner exceptions.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.AggregateAssemblyInspectionException.#ctor(System.Exception[])">
+            <summary>
+            Creates an instance of <see cref="T:Solid.Practices.Composition.Container.AggregateAssemblyInspectionException"/>
+            </summary>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.AssemblyInspectionException">
+            <summary>
+            Represents an exception that is thrown during assembly inspection
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.AssemblyInspectionException.AssemblyName">
+            <summary>
+            The assembly whose inspection resulted in the exception.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.AssemblyInspectionException.#ctor(System.String,System.Exception)">
+            <summary>
+            Creates an instance of <see cref="T:Solid.Practices.Composition.Container.AssemblyInspectionException"/>
+            </summary>
+            <param name="assemblyName">The assembly.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.AssemblyInspectionException.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.AggregateModuleCreationException">
+            <summary>
+            Represents an exception that is thrown during modules' creation.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.AggregateModuleCreationException.InnerExceptions">
+            <summary>
+            The collection modules' inner exceptions.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.AggregateModuleCreationException.#ctor(Solid.Practices.Composition.Container.ModuleCreationException[])">
+            <summary>
+            Creates an instance of <see cref="T:Solid.Practices.Composition.Container.AggregateModuleCreationException"/>
+            </summary>
+            <param name="innerExceptions">The inner exceptions.</param>
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.ModuleCreationException">
+            <summary>
+            Represents an exception that is thrown during module creation.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.ModuleCreationException.Type">
+            <summary>
+            The module type.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.ModuleCreationException.#ctor(System.Reflection.TypeInfo,System.Exception)">
+            <summary>
+            Creates an instance of <see cref="T:Solid.Practices.Composition.Container.ModuleCreationException"/>
+            </summary>
+            <param name="type">The module type.</param>
+            <param name="innerException">The inner exception.</param>
+        </member>
+        <member name="T:Solid.Practices.Composition.Container.SimpleCompositionContainer`1">
+            <summary>
+            Represents a basic implementation of composition container with export feature only.
+            </summary>
+            <typeparam name="TModule">The type of the module.</typeparam>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionContainer" />
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},Solid.Practices.Composition.Container.ITypeInfoExtractionService,Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.Container.SimpleCompositionContainer`1"/> class.
+            </summary>
+            <param name="assemblies">The assemblies.</param>
+            <param name="typeInfoExtractionService">The type info extraction service.</param>
+            <param name="compositionModuleCreationStrategy">The module creation strategy.</param>        
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>            
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Solid#Practices#Composition#Contracts#ICompositionModulesProvider{TModule}#Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>            
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Compose">
+            <summary>
+            Composes the composition modules.
+            </summary>
+        </member>
+    </members>
+</doc>

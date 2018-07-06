@@ -1,0 +1,195 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.Contracts.IAssembliesReadOnlyResolver">
+            <summary>
+            Represents assemblies resolver.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IAssembliesReadOnlyResolver.GetAssemblies">
+            <summary>
+            Gets available assemblies.
+            </summary>
+            <returns>Collection of assemblies.</returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.IAssemblyLoadingStrategy">
+            <summary>
+            Represents assembly loading strategy.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IAssemblyLoadingStrategy.Load">
+            <summary>
+            Loads the assemblies.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.IAssemblySourceProvider">
+            <summary>
+            Represents an object that is able to retrieve list of the assemblies to be 
+            inspected for application elements.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.Contracts.IAssemblySourceProvider.Assemblies">
+            <summary>
+            Gets the assemblies which can be inspected for the additional components.
+            </summary>
+            <value>
+            The assemblies.
+            </value>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionContainer">
+            <summary>
+            Represents strongly-typed composition container.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionContainer`1">
+            <summary>
+            Represents composition container which allows composing the composition modules.
+            </summary>
+            <typeparam name="TModule">Type of composition module.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.ICompositionContainer`1.Compose">
+            <summary>
+            Composes the composition modules.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionManager">
+            <summary>
+            Allows initializing composition from the given path.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.ICompositionManager.Initialize(System.String,System.String[])">
+            <summary>
+            Initializes composition modules from the provided path.
+            </summary>
+            <param name="rootPath">Root path.</param>
+            <param name="prefixes">Optional file name prefixes; 
+            used for filtering potential assembly candidates.</param>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy">
+            <summary>
+            Represents module creation strategy.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy.CreateCompositionModule(System.Type)">
+            <summary>
+            Creates composition module from its type.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionModulesProvider">
+            <summary>
+            Represents strongly-type read-only collection of composition modules.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.ICompositionModulesProvider`1">
+            <summary>
+            Represents a read-only collection of composition modules.
+            </summary>
+            <typeparam name="TModule">Type of composition module.</typeparam>
+        </member>
+        <member name="P:Solid.Practices.Composition.Contracts.ICompositionModulesProvider`1.Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.IPlatformProvider">
+            <summary>
+            Interface for platform specific operations that need enlightenment.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.GetFiles(System.String)">
+            <summary>
+            Gets the files at the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.GetFiles(System.String,System.String)">
+            <summary>
+            Gets the files at the specified path, using provided search pattern.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.GetRootPath">
+            <summary>
+            Gets the root path.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.GetAbsolutePath(System.String)">
+            <summary>
+            Gets the absolute path.
+            </summary>
+            <param name="relativePath">The relative path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.WriteText(System.String,System.String)">
+            <summary>
+            Writes the specified text into the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="contents">The text.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.IPlatformProvider.ReadText(System.String)">
+            <summary>
+            Reads the contents of the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Contracts.PlatformProviderBase">
+            <summary>
+            Contains default implementation of some <see cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider"/> methods.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.GetFiles(System.String)">
+            <summary>
+            Gets the files at the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.GetFiles(System.String,System.String)">
+            <summary>
+            Gets the files at the specified path, using provided search pattern.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.GetRootPath">
+            <summary>
+            Gets the root path.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.GetAbsolutePath(System.String)">
+            <summary>
+            Gets the absolute path.
+            </summary>
+            <param name="relativePath">The relative path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.WriteText(System.String,System.String)">
+            <summary>
+            Writes the specified text into the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="contents">The text.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.Contracts.PlatformProviderBase.ReadText(System.String)">
+            <summary>
+            Reads the contents of the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

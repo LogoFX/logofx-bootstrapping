@@ -1,0 +1,185 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Modularity</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Modularity.IModule">
+            <summary>
+            Represents a module, i.e. an encapsulated decoupled
+            piece of application that is not referenced explicitly
+            and gets discovered in the run time instead.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ICompositionModule">
+            <summary>
+            Represents a composition module, i.e. a module which 
+            can be discovered and instantiated during the application composition.
+            It is a marker interface.    
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ICompositionModule`1">
+            <summary>
+            Represents a composition module, which may register dependencies into an IoC container.
+            </summary>
+            <typeparam name="TDependencyRegistrator">The type of the dependency registrator.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.Modularity.ICompositionModule`1.RegisterModule(`0)">
+            <summary>
+            Registers dependencies.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+        </member>
+        <member name="T:Solid.Practices.Modularity.IPlainCompositionModule">
+            <summary>
+            Represents a composition module which contains logic that is
+            executed upon registration.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Modularity.IPlainCompositionModule.RegisterModule">
+            <summary>
+            Registers the composition module.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Modularity.IScopedCompositionModule">
+            <summary>
+            Represents a composition module, which may register dependencies
+            that are dependent on the lifetime of another object.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Modularity.IScopedCompositionModule.RegisterModule(Solid.Practices.IoC.IDependencyRegistratorScoped,System.Func{System.Object})">
+            <summary>
+            Registers the dependencies.
+            </summary>
+            <param name="dependencyRegistratorScoped">The scoped dependency registrator.</param>
+            <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
+        </member>
+        <member name="T:Solid.Practices.Modularity.IHierarchicalCompositionModule`1">
+            <summary>
+            Represents a composition module, which is able to
+            register collections of other modules into the IoC container.
+            </summary>
+            <seealso cref="T:Solid.Practices.Modularity.ICompositionModule" />
+        </member>
+        <member name="M:Solid.Practices.Modularity.IHierarchicalCompositionModule`1.RegisterModules(`0,System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Registers the modules.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="modules">The modules collection.</param>
+        </member>
+        <member name="T:Solid.Practices.Modularity.RegistrationHelper">
+            <summary>
+            Registration helper.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Modularity.RegistrationHelper.RegisterModules``1(Solid.Practices.IoC.IDependencyRegistrator,System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Registers collection of modules into the IoC container.
+            </summary>
+            <typeparam name="TModule">The type of the module.</typeparam>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="modules">The collection of modules.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.RegistrationHelper.RegisterModules(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Registers the modules into the IoC container.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="contractType">The type of the contract.</param>
+            <param name="modules">The collection of modules.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.RegistrationHelper.RegisterCollection(Solid.Practices.IoC.IDependencyRegistrator,System.Type,System.Collections.Generic.IEnumerable{System.Type})">
+            <summary>
+            Registers the collection of types that implement the specified contract
+            into the IoC container.
+            </summary>
+            <param name="dependencyRegistrator">The dependency registrator.</param>
+            <param name="contractType">The type of the contract.</param>
+            <param name="types">The types.</param>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ContainerRegistrationMiddleware`2">
+            <summary>
+            Middleware that's able to register composition modules into the IoC container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the IoC  container.</typeparam>
+            <typeparam name="TContainerConstraint">The type of the IoC container constraint.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerRegistrationMiddleware`2.#ctor(System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Initializes a new instance of the 
+            <see cref="T:Solid.Practices.Modularity.ContainerRegistrationMiddleware`2"/> class.
+            </summary>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerRegistrationMiddleware`2.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>        
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ContainerPlainRegistrationMiddleware`1">
+            <summary>
+            Middleware that's able to register plain composition modules into the IoC container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the IoC container.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerPlainRegistrationMiddleware`1.#ctor(System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Modularity.ContainerPlainRegistrationMiddleware`1"/> class.
+            </summary>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerPlainRegistrationMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>        
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ContainerScopedRegistrationMiddleware`1">
+            <summary>
+            Middleware that's able to register scoped composition modules into the IoC container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the IoC container.</typeparam>
+            <seealso />
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerScopedRegistrationMiddleware`1.#ctor(System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule},System.Func{System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Modularity.ContainerScopedRegistrationMiddleware`1"/> class.
+            </summary>
+            <param name="modules">The modules collection.</param>
+            <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerScopedRegistrationMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Modularity.ContainerHierarchicalRegistrationMiddleware`1">
+            <summary>
+            Middleware that's able to register hierarchical composition modules into the IoC container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the IoC container.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerHierarchicalRegistrationMiddleware`1.#ctor(System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Modularity.ContainerHierarchicalRegistrationMiddleware`1"/> class.
+            </summary>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="M:Solid.Practices.Modularity.ContainerHierarchicalRegistrationMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>        
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

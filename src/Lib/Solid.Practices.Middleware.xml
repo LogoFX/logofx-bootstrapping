@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Middleware</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Middleware.IMiddleware`1">
+            <summary>
+            Represents an interface for middleware that is applied to an object.
+            <typeparam name="T">The type of the object.</typeparam>
+            
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Middleware.IMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>        
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Middleware.MiddlewareApplier">
+            <summary>
+            Applies middlewares onto the provided object.
+            </summary>    
+        </member>
+        <member name="M:Solid.Practices.Middleware.MiddlewareApplier.ApplyMiddlewares``1(``0,System.Collections.Generic.IEnumerable{Solid.Practices.Middleware.IMiddleware{``0}})">
+            <summary>
+            Applies the middlewares.
+            </summary>        
+            <typeparam name="T">The type of the object.</typeparam>
+            <param name="object">The object.</param>
+            <param name="middlewares">The middlewares.</param>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.AssembliesResolverBase">
+            <summary>
+            Base class for assembly resolvers.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.AssembliesResolverBase.#ctor(Solid.Practices.Composition.Contracts.IAssemblySourceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.AssembliesResolverBase"/> class.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.AssembliesResolverBase.GetRootAssemblies">
+            <summary>
+            Override this method to retrieve platform-specific root assemblies.
+            </summary>
+            <returns>Collection of assemblies.</returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.AssembliesResolverBase.Solid#Practices#Composition#Contracts#IAssembliesReadOnlyResolver#GetAssemblies">
+            <summary>
+            Gets available assemblies.
+            </summary>
+            <returns>Collection of assemblies.</returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.AssemblyLoadingManager">
+            <summary>
+            Enables defining set of conventions used during the assembly loading.
+            </summary>
+        </member>
+        <member name="F:Solid.Practices.Composition.AssemblyLoadingManager.ClientNamespaces">
+            <summary>
+            Calculates the list of client namespaces to be looked for during assembly discovery.
+            </summary>
+        </member>
+        <member name="F:Solid.Practices.Composition.AssemblyLoadingManager.ServerNamespaces">
+            <summary>
+            Calculates the list of server namespaces to be looked for during assembly discovery.
+            </summary>
+        </member>
+        <member name="F:Solid.Practices.Composition.AssemblyLoadingManager.Extensions">
+            <summary>
+            Calculates the list of supported assembly extensions.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.PreloadedAssemblyLoadingStrategy">
+            <summary>
+            Represents a pre-loaded assemblies' based assembly loading strategy.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.PreloadedAssemblyLoadingStrategy.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.PreloadedAssemblyLoadingStrategy"/> class.
+            </summary>
+            <param name="assemblies">The preloaded assemblies.</param>
+            <param name="prefixes">Allowed prefixes; leave empty if all are allowed.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.PreloadedAssemblyLoadingStrategy.Load">
+            <inheritdoc />
+        </member>
+        <member name="T:Solid.Practices.Composition.FileSystemBasedAssemblyLoadingStrategy">
+            <summary>
+            Represents a file-system based assembly loading strategy.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.FileSystemBasedAssemblyLoadingStrategy.#ctor(System.String,System.String[])">
+            <summary>
+            Initializes a new instance of the<see cref="T:Solid.Practices.Composition.FileSystemBasedAssemblyLoadingStrategy"/> class.     
+            </summary>
+            <param name="rootPath">Root path for inspection</param>
+            <param name="prefixes">Allowed prefixes; leave empty if all are allowed.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.FileSystemBasedAssemblyLoadingStrategy.Load">
+            <inheritdoc />
+        </member>
+        <member name="T:Solid.Practices.Composition.TypeBasedAssemblyLoadingStrategy">
+            <summary>
+            Represents a type-based assembly loading strategy.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.TypeBasedAssemblyLoadingStrategy.#ctor(System.Collections.Generic.IEnumerable{System.Type},System.String[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.TypeBasedAssemblyLoadingStrategy"/> class.
+            </summary>
+            <param name="types">The types.</param>
+            <param name="prefixes">Allowed prefixes; leave empty if all are allowed.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.TypeBasedAssemblyLoadingStrategy.Load">
+            <inheritdoc/>
+        </member>
+        <member name="T:Solid.Practices.Composition.AssemblySourceProviderBase">
+            <summary>
+            Base class for objects that are able to retrieve list of the assemblies to be 
+            inspected for application elements.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.IAssemblySourceProvider" />
+        </member>
+        <member name="M:Solid.Practices.Composition.AssemblySourceProviderBase.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.AssemblySourceProviderBase"/> class.
+            </summary>
+            <param name="rootPath">The root path.</param>
+        </member>
+        <member name="P:Solid.Practices.Composition.AssemblySourceProviderBase.Assemblies">
+            <summary>
+            Gets the assemblies to be inspected.
+            </summary>
+            <value>
+            The assemblies to be inspected.
+            </value>
+        </member>
+        <member name="M:Solid.Practices.Composition.AssemblySourceProviderBase.ResolveNamespaces">
+            <summary>
+            Returns the list of namespaces to be looked for during assembly discovery.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.CompositionContainer`1">
+            <summary>
+            Represents composition container which allows composing the composition modules
+            while specifying various configuration options.
+            </summary>
+            <typeparam name="TModule">The type of composition module.</typeparam>
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionContainer`1.#ctor(Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy,Solid.Practices.Composition.Contracts.IAssemblyLoadingStrategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.CompositionContainer`1"/> class.
+            </summary>
+            <param name="compositionModuleCreationStrategy">The module creation strategy.</param>
+            <param name="assemblyLoadingStrategy">The assembly loading strategy.</param>       
+        </member>
+        <member name="P:Solid.Practices.Composition.CompositionContainer`1.Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>        
+        </member>
+        <member name="T:Solid.Practices.Composition.CompositionContainer">
+            <summary>
+            Represents strongly-typed composition container which allows composing the composition modules
+            while specifying various configuration options
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionContainer" />
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionContainer.#ctor(Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy,Solid.Practices.Composition.Contracts.IAssemblyLoadingStrategy)">
+            <inheritdoc />      
+        </member>
+        <member name="T:Solid.Practices.Composition.CompositionManager">
+            <summary>
+            Allows initializing composition from the given path.
+            </summary>
+        </member>
+        <member name="T:Solid.Practices.Composition.CompositionManager.WithIocResolution">
+            <summary>
+            Represents <see cref="T:Solid.Practices.Composition.CompositionManager"/> which uses container
+            for creating composition modules.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.CompositionManager" />
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionManager.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.CompositionManager"/> class.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionManager.#ctor(Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.CompositionManager"/> class.
+            </summary>
+            <param name="compositionModuleCreationStrategy">The module creation strategy.</param>
+        </member>
+        <member name="F:Solid.Practices.Composition.CompositionManager.CompositionContainer">
+            <summary>
+            The composition container.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.CompositionManager.Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionManager.Initialize(System.String,System.String[])">
+            <summary>
+            Initializes composition modules from the provided path.
+            </summary>        
+            <param name="rootPath">Root path.</param>
+            <param name="prefixes">Optional file name prefixes; 
+            used for filtering potential assembly candidates.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.CompositionManager.Initialize(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Initializes composition modules from the provided assemblies.
+            </summary>
+            <param name="assemblies"></param>
+        </member>
+        <member name="T:Solid.Practices.Composition.ActivatorCreationStrategy">
+            <summary>
+            Uses <see cref="T:System.Activator"/> for creating composition modules.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy" />
+        </member>
+        <member name="M:Solid.Practices.Composition.ActivatorCreationStrategy.CreateCompositionModule(System.Type)">
+            <summary>
+            Creates composition module from its type.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.ContainerResolutionStrategy">
+            <summary>
+            Uses <see cref="T:Solid.Practices.IoC.IIocContainer"/> for creating composition modules.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy" />
+        </member>
+        <member name="M:Solid.Practices.Composition.ContainerResolutionStrategy.#ctor(Solid.Practices.IoC.IIocContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.ContainerResolutionStrategy"/> class.
+            </summary>
+            <param name="iocContainer">The ioc container.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.ContainerResolutionStrategy.CreateCompositionModule(System.Type)">
+            <summary>
+            Creates composition module from its type.
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.NetStandardPlatformProvider">
+            <summary>
+            Implementation of <see cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider"/> for .NETStandard
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.NetStandardPlatformProvider.GetFiles(System.String)">
+            <summary>
+            Gets the files at the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.NetStandardPlatformProvider.GetFiles(System.String,System.String)">
+            <summary>
+            Gets the files at the specified path, using provided search pattern.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.NetStandardPlatformProvider.GetRootPath">
+            <summary>
+            Gets the root path.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.NetStandardPlatformProvider.WriteText(System.String,System.String)">
+            <summary>
+            Writes the specified text into the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="contents">The text.</param>        
+        </member>
+        <member name="M:Solid.Practices.Composition.NetStandardPlatformProvider.ReadText(System.String)">
+            <summary>
+            Reads the contents of the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>        
+        </member>
+        <member name="T:Solid.Practices.Composition.PlatformProvider">
+            <summary>
+            Ambient context that holds current value for <see cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Solid.Practices.Composition.PlatformProvider.Current">
+            <summary>
+            Gets or sets the current value for platform provider.
+            </summary>
+            <value>
+            The current.
+            </value>
+        </member>
+        <member name="T:Solid.Practices.Composition.DefaultPlatformProvider">
+            <summary>
+            Default implementation of <see cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider"/>.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.IPlatformProvider" />
+        </member>
+        <member name="M:Solid.Practices.Composition.DefaultPlatformProvider.GetFiles(System.String)">
+            <summary>
+            Gets the files at the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.DefaultPlatformProvider.GetFiles(System.String,System.String)">
+            <summary>
+            Gets the files at the specified path, using provided search pattern.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="searchPattern">The search pattern.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.DefaultPlatformProvider.GetRootPath">
+            <summary>
+            Gets the root directory.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Solid.Practices.Composition.DefaultPlatformProvider.WriteText(System.String,System.String)">
+            <summary>
+            Writes the specified text into the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="contents">The text.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.DefaultPlatformProvider.ReadText(System.String)">
+            <summary>
+            Reads the contents of the resource identified by the specified path.
+            </summary>
+            <param name="path">The path.</param>
+            <returns></returns>
+            <exception cref="T:System.NotImplementedException"></exception>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Bootstrapping</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Bootstrapping.IHaveContainer`1">
+            <summary>
+            Represents an application whose architecture includes IoC container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the IoC container.</typeparam>
+        </member>
+        <member name="P:Solid.Bootstrapping.IHaveContainer`1.Container">
+            <summary>
+            Gets the ioc container.
+            </summary>
+            <value>
+            The ioc container.
+            </value>
+        </member>
+        <member name="T:Solid.Bootstrapping.IHaveRegistrator">
+            <summary>
+            Represents an application whose architecture includes <see cref="T:Solid.Practices.IoC.IDependencyRegistrator"/> 
+            as the dependency registator abstraction.
+            </summary>
+        </member>
+        <member name="T:Solid.Bootstrapping.IHaveRegistrator`1">
+            <summary>
+            Represents an application whose architecture includes dependency registrator.
+            </summary>
+            <typeparam name="TDependencyRegistrator"></typeparam>
+        </member>
+        <member name="P:Solid.Bootstrapping.IHaveRegistrator`1.Registrator">
+            <summary>
+            Gets the registrator.
+            </summary>
+            <value>
+            The registrator.
+            </value>
+        </member>
+        <member name="T:Solid.Bootstrapping.IHaveResolver">
+            <summary>
+            Represents an application whose architecture includes dependency resolver (service locator).
+            </summary>
+        </member>
+        <member name="P:Solid.Bootstrapping.IHaveResolver.Resolver">
+            <summary>
+            Gets the resolver.
+            </summary>
+            <value>
+            The resolver.
+            </value>
+        </member>
+        <member name="T:Solid.Bootstrapping.IHaveRootObject`1">
+            <summary>
+            Represents the root object of an application.
+            </summary>
+            <typeparam name="TRootObject">The type of the root object.</typeparam>
+        </member>
+        <member name="P:Solid.Bootstrapping.IHaveRootObject`1.RootObject">
+            <summary>
+            Gets the root object.
+            </summary>
+            <value>
+            The container.
+            </value>
+        </member>
+        <member name="T:Solid.Bootstrapping.IInitializable">
+            <summary>
+            Represents an initializable object.
+            Used during application bootstrapping.
+            </summary>
+        </member>
+        <member name="M:Solid.Bootstrapping.IInitializable.Initialize">
+            <summary>
+            Initializes this instance.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -35,28 +35,28 @@
 
   <ItemGroup>
     <Reference Include="Solid.Bootstrapping">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Extensibility.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Extensibility.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Container">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Container.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.Composition.Container.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Contracts">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Composition.Contracts.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.Composition.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.IoC">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.IoC.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Middleware">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Middleware.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Modularity">
-      <HintPath>..\..\..\..\..\Solid\Bin\netstandard2.0\Release\netstandard2.0\Solid.Practices.Modularity.dll</HintPath>
+      <HintPath>..\..\Lib\Solid.Practices.Modularity.dll</HintPath>
     </Reference>
   </ItemGroup>
 

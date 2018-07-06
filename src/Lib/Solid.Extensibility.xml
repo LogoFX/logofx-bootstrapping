@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Extensibility</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Extensibility.IExtensible`1">
+            <summary>
+            Represents an object whose functionality can be extended.
+            </summary>
+            <typeparam name="T">The type of the object.</typeparam>
+        </member>
+        <member name="M:Solid.Extensibility.IExtensible`1.Use(Solid.Practices.Middleware.IMiddleware{`0})">
+            <summary>
+            Extends the functionality by using the specified middleware.
+            </summary>
+            <param name="middleware">The middleware.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
