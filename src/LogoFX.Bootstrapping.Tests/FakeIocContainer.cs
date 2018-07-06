@@ -210,6 +210,8 @@ namespace LogoFX.Bootstrapping.Tests
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
         public IEnumerable<Assembly> Assemblies { get; internal set; }
+        public IEnumerable<Exception> Errors { get; internal set; }
+
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
@@ -218,6 +220,7 @@ namespace LogoFX.Bootstrapping.Tests
         public IDependencyRegistrator Registrator { get; internal set; }
         public IDependencyResolver Resolver { get; internal set; }
         public event EventHandler InitializationCompleted;
+        public event EventHandler Exited;
         IBootstrapperWithRegistrator IExtensible<IBootstrapperWithRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithRegistrator> middleware)
         {
             throw new NotImplementedException();
@@ -243,6 +246,8 @@ namespace LogoFX.Bootstrapping.Tests
 
         public IEnumerable<ICompositionModule> Modules { get; internal set; }
         public IEnumerable<Assembly> Assemblies { get; internal set; }
+        public IEnumerable<Exception> Errors { get; internal set; }
+
         public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
         {
             throw new NotImplementedException();
@@ -257,5 +262,6 @@ namespace LogoFX.Bootstrapping.Tests
         public IDependencyResolver Resolver { get; internal set; }
         public FakeContainer Container { get; internal set; }
         public event EventHandler InitializationCompleted;
+        public event EventHandler Exited;
     }
 }
