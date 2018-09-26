@@ -4,7 +4,6 @@ using Solid.Bootstrapping;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
-using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
 {
@@ -193,7 +192,7 @@ namespace LogoFX.Bootstrapping
         public TBootstrapper
             Apply(TBootstrapper @object)
         {
-            RegistrationHelper.RegisterCollection(@object.Registrator, _serviceContractType,
+            @object.Registrator.RegisterCollection(_serviceContractType,
                 @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()));
             return @object;
         }
