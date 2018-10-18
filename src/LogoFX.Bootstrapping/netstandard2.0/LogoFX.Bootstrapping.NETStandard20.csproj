@@ -35,6 +35,7 @@
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc4" />
     <PackageReference Include="Solid.Extensibility" Version="1.2.1-rc3" />
     <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc8" />
+    <PackageReference Include="Solid.Practices.IoC" Version="1.2.1-rc6" />
     <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc4" />
   </ItemGroup>
 
