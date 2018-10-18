@@ -199,6 +199,28 @@ namespace LogoFX.Bootstrapping
     }
 
     /// <summary>
+    /// Registers collection of services. This is used in case of 
+    /// loosely coupled modular application where the services are defined in separate assemblies 
+    /// and/or are otherwise private.
+    /// <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>   
+    /// <typeparam name="TService">The type of the service.</typeparam> 
+    /// </summary>
+    public sealed class RegisterCollectionMiddleware<TBootstrapper, TService> :
+        IMiddleware<TBootstrapper>
+        where TBootstrapper : class, IHaveRegistrator, IAssemblySourceProvider where TService : class
+    {
+        /// <inheritdoc />       
+        public TBootstrapper
+            Apply(TBootstrapper @object)
+        {
+            @object.Registrator.RegisterCollection<TService>(
+                @object.Assemblies.Select(t => t.DefinedTypes.ToArray()).SelectMany(k => k).Select(t => t.AsType()),
+                true);
+            return @object;
+        }
+    }
+
+    /// <summary>
     /// Registers the dependency resolver.
     /// </summary>    
     public class RegisterResolverMiddleware : IMiddleware<IBootstrapperWithRegistrator>
@@ -251,7 +273,7 @@ namespace LogoFX.Bootstrapping
             @object.Registrator.RegisterInstance(_resolver);
             return @object;
         }
-    }    
+    }
 
     /// <summary>
     /// Extends the bootstrapper's functionality by using the 

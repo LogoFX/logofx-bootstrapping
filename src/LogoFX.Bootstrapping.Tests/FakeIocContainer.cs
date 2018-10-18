@@ -163,6 +163,16 @@ namespace LogoFX.Bootstrapping.Tests
             throw new NotImplementedException();
         }
 
+        public IEnumerable<TService> ResolveAll<TService>() where TService : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> ResolveAll(Type serviceType)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
             throw new NotImplementedException();
