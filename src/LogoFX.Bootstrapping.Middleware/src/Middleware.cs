@@ -248,6 +248,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers the dependency resolver.
     /// </summary>
