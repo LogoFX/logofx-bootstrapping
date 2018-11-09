@@ -5,6 +5,7 @@ using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
 {
+    //TODO: Remove
     /// <summary>
     /// The ioc container extension methods.
     /// </summary>

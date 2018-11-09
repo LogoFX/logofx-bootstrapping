@@ -22,6 +22,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers composition modules into the bootstrapper's registrator.
     /// </summary>
@@ -40,6 +41,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers composition modules into the bootstrapper's registrator.
     /// </summary>
@@ -86,6 +88,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers composition modules into the boostrapper's ioc container.
     /// </summary>
@@ -278,6 +281,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Extends the bootstrapper's functionality by using the 
     /// specified dependency registrator middleware.
