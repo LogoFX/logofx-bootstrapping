@@ -163,6 +163,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers collection of services. This is used in case of 
     /// loosely coupled modular application where the services are defined in separate assemblies 
@@ -198,6 +199,7 @@ namespace LogoFX.Bootstrapping
         }
     }
 
+    //TODO: Remove
     /// <summary>
     /// Registers collection of services. This is used in case of 
     /// loosely coupled modular application where the services are defined in separate assemblies 
