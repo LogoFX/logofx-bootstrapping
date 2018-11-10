@@ -22,10 +22,10 @@
     <PackageReference Include="Solid.Practices.Composition.Core" Version="1.2.1-rc9" />
     <PackageReference Include="Solid.Practices.IoC" Version="1.2.1-rc7" />
     <PackageReference Include="Solid.Practices.Modularity" Version="1.2.1-rc5" />
-  </ItemGroup>
+  </ItemGroup>  
 
   <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj" />
+    <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj" />
   </ItemGroup>
 
 </Project>

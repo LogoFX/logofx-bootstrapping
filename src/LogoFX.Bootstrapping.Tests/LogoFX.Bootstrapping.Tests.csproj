@@ -56,12 +56,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj">
-      <Project>{e1287ceb-a187-474b-9db6-e9de154b7eef}</Project>
-      <Name>LogoFX.Bootstrapping.NETStandard20</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="FluentAssertions">
       <Version>5.5.0</Version>
     </PackageReference>
@@ -86,6 +80,16 @@
     <PackageReference Include="xunit.core">
       <Version>2.4.1</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.csproj">
+      <Project>{444a91d0-0274-492a-bebd-2515f9817568}</Project>
+      <Name>LogoFX.Bootstrapping.Middleware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj">
+      <Project>{28e8f208-b45a-4fa8-ac89-23f4f59697a5}</Project>
+      <Name>LogoFX.Bootstrapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

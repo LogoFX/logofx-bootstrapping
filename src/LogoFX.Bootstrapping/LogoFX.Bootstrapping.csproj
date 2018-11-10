@@ -12,22 +12,15 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Bootstrapping.xml</DocumentationFile>
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Bootstrapping.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>Y:\Workspace\Samples.Specifications\Bin\DebugWithFake\</OutputPath>
+    <OutputPath>bin\Debug</OutputPath>
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\CompositionHelper.cs" Link="CompositionHelper.cs" />
-    <Compile Include="..\src\CompositionStorage.cs" Link="CompositionStorage.cs" />
-    <Compile Include="..\src\IBootstrapper.cs" Link="IBootstrapper.cs" />
-    <Compile Include="..\src\IBootstrapperCompositionModule.cs" Link="IBootstrapperCompositionModule.cs" />
-  </ItemGroup>
+  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc5" />
