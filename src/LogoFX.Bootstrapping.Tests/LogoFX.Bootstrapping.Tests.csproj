@@ -41,25 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FakeIocContainer.cs">      
+    <Compile Include="FakeIocContainer.cs">
     </Compile>
-    <Compile Include="MiddlewareTests.cs">      
+    <Compile Include="MiddlewareTests.cs">
     </Compile>
-    <Compile Include="ServiceContract.cs">      
+    <Compile Include="ServiceContract.cs">
     </Compile>
-    <Compile Include="TransientCompositionModule.cs">      
+    <Compile Include="TransientCompositionModule.cs">
     </Compile>
-    <Compile Include="TransientDependency.cs">      
+    <Compile Include="TransientDependency.cs">
     </Compile>
-    <Compile Include="TransientIocCompositionModule.cs">      
+    <Compile Include="TransientIocCompositionModule.cs">
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.NETStandard20\LogoFX.Bootstrapping.Middleware.NETStandard20.csproj">
-      <Project>{1cbc225b-78df-45f6-9d43-1363621d0d79}</Project>
-      <Name>LogoFX.Bootstrapping.Middleware.NETStandard20</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj">
       <Project>{e1287ceb-a187-474b-9db6-e9de154b7eef}</Project>
       <Name>LogoFX.Bootstrapping.NETStandard20</Name>

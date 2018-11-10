@@ -12,14 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
-    <Compile Include="..\src\Middleware.cs" Link="Middleware.cs" />
-  </ItemGroup>
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
+  </PropertyGroup>  
 
   <ItemGroup>
     <PackageReference Include="Solid.Bootstrapping" Version="1.2.1-rc5" />
@@ -30,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj" />
+    <ProjectReference Include="..\LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj" />
   </ItemGroup>
 
 </Project>
