@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.Middle
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Bootstrapping.NETStandard20", "LogoFX.Bootstrapping\netstandard2.0\LogoFX.Bootstrapping.NETStandard20.csproj", "{E1287CEB-A187-474B-9DB6-E9DE154B7EEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Bootstrapping.Tests.NETStandard20", "LogoFX.Bootstrapping.Tests.NETStandard20\LogoFX.Bootstrapping.Tests.NETStandard20.csproj", "{99BA7607-2585-41DB-95BC-5E398CEB0DDF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Bootstrapping.Tests", "LogoFX.Bootstrapping.Tests\LogoFX.Bootstrapping.Tests.csproj", "{99BA7607-2585-41DB-95BC-5E398CEB0DDF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
