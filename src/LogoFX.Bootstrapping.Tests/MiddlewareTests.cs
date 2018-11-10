@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
+using Solid.Bootstrapping;
 using Solid.Practices.Modularity;
 using Xunit;
 

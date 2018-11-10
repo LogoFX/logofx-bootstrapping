@@ -16,18 +16,7 @@ namespace LogoFX.Bootstrapping
         /// Occurs when initialization is completed and the application starts.
         /// </summary>
         event EventHandler InitializationCompleted;
-    }
-
-    /// <summary>
-    /// Gets the collection of errors that happen during initialization.
-    /// </summary>
-    public interface IHaveErrors
-    {
-        /// <summary>
-        /// The errors.
-        /// </summary>
-        IEnumerable<Exception> Errors { get; }
-    }
+    }    
 
     /// <summary>
     /// Exposes additional shutdown information.
