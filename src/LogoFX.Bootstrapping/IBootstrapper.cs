@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using Solid.Bootstrapping;
 using Solid.Extensibility;
 using Solid.Practices.Composition.Contracts;
