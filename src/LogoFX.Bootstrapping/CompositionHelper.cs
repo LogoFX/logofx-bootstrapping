@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Solid.Common;
 using Solid.Practices.Composition;
 using Solid.Practices.Composition.Container;
 using Solid.Practices.Modularity;
