@@ -1,5 +1,6 @@
 ﻿using System;
 using Solid.Bootstrapping;
+using Solid.Core;
 using Solid.Extensibility;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
