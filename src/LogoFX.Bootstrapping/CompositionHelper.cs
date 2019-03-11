@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Solid.Common;
 using Solid.Practices.Composition;
 using Solid.Practices.Composition.Container;
+using Solid.Practices.Composition.Contracts;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping
@@ -33,21 +33,19 @@ namespace LogoFX.Bootstrapping
         /// <summary>
         /// Gets the composition information.
         /// </summary>
-        /// <param name="modulesPath">The relative modules path.</param>
-        /// <param name="prefixes">The prefixes to be looked for</param>
-        /// <param name="reuseCompositionInformation">True, if the composition information should be reused, false otherwise.</param>
+        /// <param name="key"></param>
+        /// <param name="assemblySourceProvider">The assembly source provider.</param>
+        /// <param name="reuseCompositionInformation">True, if the composition information should be reused, false otherwise.</param>        
         /// <returns></returns>
         public static CompositionInfo GetCompositionInfo(
-            string modulesPath,
-            string[] prefixes,
+            string key,
+            IAssemblySourceProvider assemblySourceProvider,
             bool reuseCompositionInformation)
-        {
-            var rootPath = PlatformProvider.Current.GetAbsolutePath(modulesPath);
-            var key = rootPath;
+        {                               
             CompositionInfo compositionInfo;
             if (reuseCompositionInformation == false)
             {
-                compositionInfo = ConstructCompositionInfo(rootPath, prefixes);
+                compositionInfo = ConstructCompositionInfo(assemblySourceProvider.Assemblies);
             }
             else
             {
@@ -56,7 +54,7 @@ namespace LogoFX.Bootstrapping
                 {
                     return compositionInfo;
                 }
-                compositionInfo = ConstructCompositionInfo(rootPath, prefixes);
+                compositionInfo = ConstructCompositionInfo(assemblySourceProvider.Assemblies);
                 CompositionStorage.AddCompositionModules(key, compositionInfo.Modules.ToArray());
                 return compositionInfo;
             }
@@ -64,14 +62,16 @@ namespace LogoFX.Bootstrapping
         }
 
         private static CompositionInfo ConstructCompositionInfo(
-            string modulesPath,
+            string relativePath,
             string[] prefixes)
         {
             var compositionManager = new CompositionManager();
+            var discoveryAspect = new DiscoveryAspect(new CompositionOptions
+                {Prefixes = prefixes, RelativePath = relativePath});
             var compositionInfo = new CompositionInfo();            
             try
             {
-                compositionManager.Initialize(modulesPath, prefixes);
+                compositionManager.Initialize(discoveryAspect.Assemblies);
             }
             catch (AggregateAssemblyInspectionException exception)
             {
