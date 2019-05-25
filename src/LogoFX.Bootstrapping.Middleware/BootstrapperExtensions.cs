@@ -2,6 +2,7 @@ using System;
 using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 
+// ReSharper disable once CheckNamespace
 namespace LogoFX.Bootstrapping
 {
     /// <summary>

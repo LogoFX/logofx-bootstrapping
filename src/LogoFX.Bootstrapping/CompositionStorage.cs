@@ -15,8 +15,7 @@ namespace LogoFX.Bootstrapping
 
         internal static ICompositionModule[] GetCompositionModules(string rootPath)
         {
-            ICompositionModule[] compositionModules;
-            InternalStorage.TryGetValue(rootPath, out compositionModules);
+            InternalStorage.TryGetValue(rootPath, out var compositionModules);
             return compositionModules;
         }
     }
