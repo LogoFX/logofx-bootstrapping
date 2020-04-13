@@ -3,11 +3,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <IsPackable>false</IsPackable>
-    <AssemblyName>LogoFX.Bootstrapping.Tests</AssemblyName>
-    <RootNamespace>LogoFX.Bootstrapping.Tests</RootNamespace>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
@@ -19,6 +14,9 @@
     <PackageReference Include="Solid.Extensibility" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
+    <PackageReference Include="SpecFlow" Version="3.1.97" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.97" />
+    <PackageReference Include="SpecFlow.xUnit" Version="3.1.97" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="xunit.core" Version="2.4.1" />
   </ItemGroup>
@@ -26,6 +24,21 @@
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.csproj" />
     <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Middleware.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Middleware.feature</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Middleware.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Middleware.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
