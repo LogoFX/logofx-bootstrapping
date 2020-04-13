@@ -37,13 +37,13 @@ namespace LogoFX.Bootstrapping.Tests
         public object Instance { get; private set; }
     }
 
-    class FakeIocContainer : IIocContainer
+    class FakeIocContainer : IIocContainer, IRegistrationCollection
     {
         private readonly List<ContainerEntry> _registrations = new List<ContainerEntry>();
 
         private readonly List<InstanceEntry> _instances = new List<InstanceEntry>();
 
-        internal IEnumerable<ContainerEntry> Registrations
+        IEnumerable<ContainerEntry> IRegistrationCollection.Registrations
         {
             get { return _registrations;}
         }
@@ -179,13 +179,13 @@ namespace LogoFX.Bootstrapping.Tests
         }
     }
 
-    class FakeContainer
+    class FakeContainer : IRegistrationCollection
     {
         private readonly List<ContainerEntry> _registrations = new List<ContainerEntry>();
 
         private readonly List<InstanceEntry> _instances = new List<InstanceEntry>();
 
-        internal IEnumerable<ContainerEntry> Registrations
+        IEnumerable<ContainerEntry> IRegistrationCollection.Registrations
         {
             get { return _registrations; }
         }
@@ -204,6 +204,11 @@ namespace LogoFX.Bootstrapping.Tests
     class RootObject
     {
         
+    }
+
+    interface IRegistrationCollection
+    {
+        IEnumerable<ContainerEntry> Registrations { get; }
     }
 
     class FakeBootstrapperWithContainerAdapter : IBootstrapperWithContainerAdapter<FakeIocContainer>
