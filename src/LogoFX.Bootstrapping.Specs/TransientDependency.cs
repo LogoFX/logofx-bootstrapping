@@ -1,4 +1,4 @@
-namespace LogoFX.Bootstrapping.Tests
+namespace LogoFX.Bootstrapping.Specs
 {
     interface IDependency
     {

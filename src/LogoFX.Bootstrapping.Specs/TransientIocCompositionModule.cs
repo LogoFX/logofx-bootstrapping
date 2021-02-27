@@ -1,7 +1,7 @@
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 
-namespace LogoFX.Bootstrapping.Tests
+namespace LogoFX.Bootstrapping.Specs
 {
     class TransientIocCompositionModule : ICompositionModule<IDependencyRegistrator>
     {

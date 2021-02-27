@@ -6,7 +6,7 @@ using Solid.Bootstrapping;
 using Solid.Practices.Modularity;
 using TechTalk.SpecFlow;
 
-namespace LogoFX.Bootstrapping.Tests
+namespace LogoFX.Bootstrapping.Specs
 {
     [Binding]
     internal sealed class MiddlewareSteps
