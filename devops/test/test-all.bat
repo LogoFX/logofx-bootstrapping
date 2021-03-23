@@ -1,0 +1,1 @@
+call test-specs-single LogoFX.Bootstrapping.Specs
