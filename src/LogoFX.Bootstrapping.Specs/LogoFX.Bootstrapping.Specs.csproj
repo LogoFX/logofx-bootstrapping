@@ -1,11 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <IsPackable>false</IsPackable>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
@@ -21,16 +19,13 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
     <PackageReference Include="xunit.core" Version="2.4.1" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Bootstrapping.Middleware\LogoFX.Bootstrapping.Middleware.csproj" />
     <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj" />
-  </ItemGroup> 
-
-   <ItemGroup>  
+  </ItemGroup>
+  <ItemGroup>
     <None Update="specflow.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>     
+    </None>
   </ItemGroup>
-
 </Project>
