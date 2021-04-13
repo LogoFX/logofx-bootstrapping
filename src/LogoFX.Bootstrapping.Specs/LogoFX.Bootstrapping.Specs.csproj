@@ -7,11 +7,11 @@
   <ItemGroup>
     <PackageReference Include="FluentAssertions" Version="5.10.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
-    <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
-    <PackageReference Include="Solid.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Extensibility" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Core" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Extensibility" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0-rc1" />
     <PackageReference Include="SpecFlow" Version="3.6.23" />
     <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.6.6" />
     <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.6.23" />
