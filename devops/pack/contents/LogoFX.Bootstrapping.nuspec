@@ -16,14 +16,14 @@ Also includes composition helpers.</description>
 Also includes composition helpers.</summary>
     <releaseNotes>Updated dependent packages</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Core" version="2.3.0-rc1" />
-      <dependency id="Solid.Practices.IoC" version="2.3.0-rc1" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.0-rc1" />
-      <dependency id="Solid.Practices.Middleware" version="2.3.0-rc1" />
-      <dependency id="Solid.Bootstrapping" version="2.3.0-rc1" />
-      <dependency id="Solid.Extensibility" version="2.3.0-rc1" />
-      <dependency id="Solid.Common.Core" version="2.3.0-rc1" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.0-rc1" />
+      <dependency id="Solid.Core" version="2.3.0" />
+      <dependency id="Solid.Practices.IoC" version="2.3.0" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.0" />
+      <dependency id="Solid.Practices.Middleware" version="2.3.0" />
+      <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <dependency id="Solid.Extensibility" version="2.3.0" />
+      <dependency id="Solid.Common.Core" version="2.3.0" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
     </dependencies>
   </metadata>
 </package>

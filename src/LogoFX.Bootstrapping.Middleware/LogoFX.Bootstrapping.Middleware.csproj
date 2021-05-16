@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -12,13 +12,13 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Core" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Extensibility" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
+    <PackageReference Include="Solid.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Extensibility" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj" />
