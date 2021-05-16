@@ -6,7 +6,7 @@ using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 using Solid.Practices.Modularity;
 
-namespace LogoFX.Bootstrapping.Tests
+namespace LogoFX.Bootstrapping.Specs
 {
     class ContainerEntry
     {

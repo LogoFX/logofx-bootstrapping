@@ -1,6 +1,6 @@
 using Solid.Practices.Modularity;
 
-namespace LogoFX.Bootstrapping.Tests
+namespace LogoFX.Bootstrapping.Specs
 {
     class TransientCompositionModule : ICompositionModule<FakeContainer>
     {

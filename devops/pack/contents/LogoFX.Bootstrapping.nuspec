@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
+  <metadata>
+    <id>LogoFX.Bootstrapping</id>
+    <version>2.2.0-rc2</version>
+    <title>LogoFX.Bootstrapping</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/LogoFX/logofx-bootstrapping/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LogoFX/logofx-bootstrapping</projectUrl>
+    <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
+    <description>LogoFX Bootstrapping containing interface for a bootstrapper. This interface is equally applicable at both the client and the server sides of an application.
+Also includes composition helpers.</description>
+    <summary>LogoFX Bootstrapping containing interface for a bootstrapper. This interface is equally applicable at both the client and the server sides of an application.
+Also includes composition helpers.</summary>
+    <releaseNotes>Updated dependent packages</releaseNotes>
+    <dependencies>
+      <dependency id="Solid.Core" version="2.3.0" />
+      <dependency id="Solid.Practices.IoC" version="2.3.0" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.0" />
+      <dependency id="Solid.Practices.Middleware" version="2.3.0" />
+      <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <dependency id="Solid.Extensibility" version="2.3.0" />
+      <dependency id="Solid.Common.Core" version="2.3.0" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
+    </dependencies>
+  </metadata>
+</package>

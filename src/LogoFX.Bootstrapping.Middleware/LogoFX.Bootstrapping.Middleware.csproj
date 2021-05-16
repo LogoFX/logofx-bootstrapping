@@ -1,30 +1,26 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.1.0</Version>
-  </PropertyGroup> 
-
+    <Version>2.2.0</Version>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
-    <DebugType>full</DebugType>
+    <OutputPath>..\Bin\netstandard\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard\Release\LogoFX.Bootstrapping.Middleware.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup>  
-
+  </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
-    <PackageReference Include="Solid.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Extensibility" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.Middleware" Version="2.2.0" />
-    <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
-  </ItemGroup>  
-
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
+    <PackageReference Include="Solid.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Extensibility" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.0" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LogoFX.Bootstrapping\LogoFX.Bootstrapping.csproj" />
   </ItemGroup>
-
 </Project>
