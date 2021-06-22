@@ -11,31 +11,31 @@ namespace LogoFX.Bootstrapping.Specs
     [Binding]
     internal sealed class MiddlewareSteps
     {
-        private readonly ScenarioContext _scenarioContext;
+        private readonly MiddlewareScenarioDataStore _scenarioDataStore;
 
         public MiddlewareSteps(ScenarioContext scenarioContext)
         {
-            _scenarioContext = scenarioContext;
+            _scenarioDataStore = new MiddlewareScenarioDataStore(scenarioContext);
         }
 
         [When(@"The container adapter is created")]
         public void WhenTheContainerAdapterIsCreated()
         {
             var containerAdapter = new FakeIocContainer();
-            _scenarioContext.Add("containerAdapter", containerAdapter);
+            _scenarioDataStore.ContainerAdapter = containerAdapter;
         }
 
         [When(@"The container is created")]
         public void WhenTheContainerIsCreated()
         {
             var container = new FakeContainer();
-            _scenarioContext.Add("container",container);
+            _scenarioDataStore.Container = container;
         }
 
         [When(@"The bootstrapper with container adapter and composition modules is created")]
         public void WhenTheBootstrapperWithContainerAdapterAndCompositionModulesIsCreated()
         {
-            var containerAdapter = _scenarioContext.Get<FakeIocContainer>("containerAdapter");
+            var containerAdapter = _scenarioDataStore.ContainerAdapter;
             var bootstrapper = new FakeBootstrapperWithContainerAdapter
             {
                 Registrator = containerAdapter,
@@ -44,14 +44,14 @@ namespace LogoFX.Bootstrapping.Specs
                     new TransientIocCompositionModule()
                 }
             };
-            _scenarioContext.Add("bootstrapper", bootstrapper);
+            _scenarioDataStore.Bootstrapper = bootstrapper;
         }
 
         [When(@"The bootstrapper with container adapter and container and composition modules is created")]
         public void WhenTheBootstrapperWithContainerAdapterAndContainerAndCompositionModulesIsCreated()
         {
-            var containerAdapter = _scenarioContext.Get<FakeIocContainer>("containerAdapter");
-            var container = _scenarioContext.Get<FakeContainer>("container");
+            var containerAdapter = _scenarioDataStore.ContainerAdapter;
+            var container = _scenarioDataStore.Container;
             var bootstrapper = new FakeBootstrapperWithContainer
             {
                 Registrator = containerAdapter,
@@ -61,14 +61,13 @@ namespace LogoFX.Bootstrapping.Specs
                     new TransientCompositionModule()
                 }
             };
-            _scenarioContext.Add("bootstrapper", bootstrapper);
+            _scenarioDataStore.Bootstrapper = bootstrapper;
         }
-
 
         [When(@"The composition modules middleware is applied onto the bootstrapper with container adapter")]
         public void WhenTheCompositionModulesMiddlewareIsAppliedOntoTheBootstrapperWithContainerAdapter()
         {
-            var bootstrapper = _scenarioContext.Get<FakeBootstrapperWithContainerAdapter>("bootstrapper");
+            var bootstrapper = _scenarioDataStore.Bootstrapper as FakeBootstrapperWithContainerAdapter;
             var middleware = new RegisterCompositionModulesMiddleware<FakeBootstrapperWithContainerAdapter>();
             middleware.Apply(bootstrapper);
         }
@@ -76,7 +75,7 @@ namespace LogoFX.Bootstrapping.Specs
         [When(@"The composition modules middleware is applied onto the bootstrapper with container adapter and container")]
         public void WhenTheCompositionModulesMiddlewareIsAppliedOntoTheBootstrapperWithContainerAdapterAndContainer()
         {
-            var bootstrapper = _scenarioContext.Get<FakeBootstrapperWithContainer>("bootstrapper");
+            var bootstrapper = _scenarioDataStore.Bootstrapper as FakeBootstrapperWithContainer;
             var middleware = new RegisterCompositionModulesMiddleware<FakeIocContainer, FakeContainer>();
             middleware.Apply(bootstrapper);
         }
@@ -84,19 +83,19 @@ namespace LogoFX.Bootstrapping.Specs
         [When(@"The bootstrapper with current assembly is created")]
         public void WhenTheBootstrapperWithCurrentAssemblyIsCreated()
         {
-            var containerAdapter = _scenarioContext.Get<FakeIocContainer>("containerAdapter");
+            var containerAdapter = _scenarioDataStore.ContainerAdapter;
             var bootstrapper = new FakeBootstrapperWithContainerAdapter
             {
                 Registrator = containerAdapter,
                 Assemblies = new[] { typeof(FakeIocContainer).GetTypeInfo().Assembly }
             };
-            _scenarioContext.Add("bootstrapper", bootstrapper);
+            _scenarioDataStore.Bootstrapper = bootstrapper;
         }
 
         [When(@"The collection registration middleware is applied onto the bootstrapper")]
         public void WhenTheCollectionRegistrationMiddlewareIsAppliedOntoTheBootstrapper()
         {
-            var bootstrapper = _scenarioContext.Get<FakeBootstrapperWithContainerAdapter>("bootstrapper");
+            var bootstrapper = _scenarioDataStore.Bootstrapper as FakeBootstrapperWithContainerAdapter;
             var middleware = new RegisterCollectionMiddleware<FakeBootstrapperWithContainerAdapter>(typeof(IServiceContract));
             middleware.Apply(bootstrapper);
         }
@@ -125,9 +124,9 @@ namespace LogoFX.Bootstrapping.Specs
 
         private ContainerEntry GetDependencyRegistration()
         {
-            var registrationCollectionKey =
-                _scenarioContext.ContainsKey("container") ? "container" : "containerAdapter";
-            var registrationCollection = _scenarioContext.Get<IRegistrationCollection>(registrationCollectionKey);
+            var registrationCollection = _scenarioDataStore.Container != null
+                ? (IRegistrationCollection) _scenarioDataStore.Container
+                : _scenarioDataStore.ContainerAdapter;
             var registrations = registrationCollection.Registrations;
             var dependencyRegistration = registrations.First();
             return dependencyRegistration;
