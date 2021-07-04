@@ -12,7 +12,7 @@ namespace LogoFX.Bootstrapping.Specs
 
         IEnumerable<ContainerEntry> IRegistrationCollection.Registrations
         {
-            get { return _registrations;}
+            get { return _registrations; }
         }
 
         internal IEnumerable<InstanceEntry> Instances
