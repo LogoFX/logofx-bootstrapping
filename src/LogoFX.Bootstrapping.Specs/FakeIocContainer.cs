@@ -1,42 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Reflection;
-using Solid.Extensibility;
 using Solid.Practices.IoC;
-using Solid.Practices.Middleware;
-using Solid.Practices.Modularity;
 
 namespace LogoFX.Bootstrapping.Specs
 {
-    class ContainerEntry
-    {
-        public ContainerEntry(
-            Type interfaceType,
-            Type implementationType, 
-            bool isSingleton)
-        {
-            InterfaceType = interfaceType;
-            ImplementationType = implementationType;
-            IsSingleton = isSingleton;
-        }
-
-        public Type InterfaceType { get; private set; }
-        public Type ImplementationType { get; private set; }
-        public bool IsSingleton { get; private set; }
-    }
-
-    class InstanceEntry
-    {
-        public InstanceEntry(Type instanceType, object instance)
-        {
-            InstanceType = instanceType;
-            Instance = instance;
-        }
-
-        public Type InstanceType { get; private set; }
-        public object Instance { get; private set; }
-    }
-
     class FakeIocContainer : IIocContainer, IRegistrationCollection
     {
         private readonly List<ContainerEntry> _registrations = new List<ContainerEntry>();
@@ -177,106 +144,5 @@ namespace LogoFX.Bootstrapping.Specs
         {
             throw new NotImplementedException();
         }
-    }
-
-    class FakeContainer : IRegistrationCollection
-    {
-        private readonly List<ContainerEntry> _registrations = new List<ContainerEntry>();
-
-        private readonly List<InstanceEntry> _instances = new List<InstanceEntry>();
-
-        IEnumerable<ContainerEntry> IRegistrationCollection.Registrations
-        {
-            get { return _registrations; }
-        }
-
-        internal IEnumerable<InstanceEntry> Instances
-        {
-            get { return _instances; }
-        }
-
-        public void RegisterTransient<TService, TImplementation>()
-        {
-            _registrations.Add(new ContainerEntry(typeof (TService), typeof (TImplementation), false));
-        }
-    }
-
-    class RootObject
-    {
-        
-    }
-
-    interface IRegistrationCollection
-    {
-        IEnumerable<ContainerEntry> Registrations { get; }
-    }
-
-    class FakeBootstrapperWithContainerAdapter : IBootstrapperWithContainerAdapter<FakeIocContainer>
-    {        
-        public IBootstrapperWithContainerAdapter<FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<FakeIocContainer>> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Initialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ICompositionModule> Modules { get; internal set; }
-        public IEnumerable<Assembly> Assemblies { get; internal set; }
-        public IEnumerable<Exception> Errors { get; internal set; }
-
-        public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDependencyRegistrator Registrator { get; internal set; }
-        public IDependencyResolver Resolver { get; internal set; }
-        public event EventHandler InitializationCompleted;
-        public event EventHandler Exited;
-        IBootstrapperWithRegistrator IExtensible<IBootstrapperWithRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithRegistrator> middleware)
-        {
-            throw new NotImplementedException();
-        }        
-    }
-
-    class FakeBootstrapperWithContainer : IBootstrapperWithContainer<FakeIocContainer, FakeContainer>
-    {
-        public IBootstrapperWithContainerAdapter<FakeIocContainer> Use(IMiddleware<IBootstrapperWithContainerAdapter<FakeIocContainer>> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IBootstrapperWithContainer<FakeIocContainer, FakeContainer> Use(IMiddleware<IBootstrapperWithContainer<FakeIocContainer, FakeContainer>> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Initialize()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ICompositionModule> Modules { get; internal set; }
-        public IEnumerable<Assembly> Assemblies { get; internal set; }
-        public IEnumerable<Exception> Errors { get; internal set; }
-
-        public IBootstrapper Use(IMiddleware<IBootstrapper> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        IBootstrapperWithRegistrator IExtensible<IBootstrapperWithRegistrator>.Use(Solid.Practices.Middleware.IMiddleware<IBootstrapperWithRegistrator> middleware)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IDependencyRegistrator Registrator { get; internal set; }
-        public IDependencyResolver Resolver { get; internal set; }
-        public FakeContainer Container { get; internal set; }
-        public event EventHandler InitializationCompleted;
-        public event EventHandler Exited;
     }
 }
