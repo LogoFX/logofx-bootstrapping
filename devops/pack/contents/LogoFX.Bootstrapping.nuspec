@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Bootstrapping</id>
-    <version>2.2.0</version>
+    <version>2.2.1-rc1</version>
     <title>LogoFX.Bootstrapping</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -14,7 +14,8 @@
 Also includes composition helpers.</description>
     <summary>LogoFX Bootstrapping containing interface for a bootstrapper. This interface is equally applicable at both the client and the server sides of an application.
 Also includes composition helpers.</summary>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+    </releaseNotes>
     <dependencies>
       <dependency id="Solid.Core" version="2.3.1" />
       <dependency id="Solid.Practices.IoC" version="2.3.1" />
