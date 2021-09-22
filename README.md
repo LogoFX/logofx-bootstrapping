@@ -10,3 +10,5 @@ Definition of bootstrapper interface. This interface is equally applicable for b
 [Living Documentation](https://ci.appveyor.com/api/projects/logofx/logofx-bootstrapping/artifacts/src/LogoFX.Bootstrapping.Specs/bin/Release/LivingDoc.html)
 
 [Get package](https://www.nuget.org/packages/LogoFX.Bootstrapping)
+
+This repository is archived. Its functionality has been moved to https://github.com/LogoFX/mvvm
